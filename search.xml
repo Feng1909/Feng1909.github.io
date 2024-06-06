@@ -48,6 +48,33 @@
       </tags>
   </entry>
   <entry>
+    <title>FUEL探索</title>
+    <url>/FUEL%E6%8E%A2%E7%B4%A2/</url>
+    <content><![CDATA[<h2 id="FIS结构"><a href="#FIS结构" class="headerlink" title="FIS结构"></a>FIS结构</h2><p>FUEL采用$FI_i$结构描述环境边界，包含的信息为：</p>
+<ul>
+<li>边界聚类 $F_i$</li>
+<li>所有数据这个类的网格 $C_i$</li>
+<li>$C_i$的中心位置 $p_{avg,i}$</li>
+<li>边界框(AABB) $B_i$</li>
+</ul>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol>
+<li>建立AABB框</li>
+<li>获取传感器信息，在新感知区域建立AABB框</li>
+<li>对比原有AABB框和新AABB框，删除不含边界的AABB框</li>
+<li>利用剩余的AABB框(FIS)更新边界</li>
+<li>判断AABB框对应边界大小，过大则主元分解</li>
+</ol>
+<h2 id="视点建立"><a href="#视点建立" class="headerlink" title="视点建立"></a>视点建立</h2><p>对于每个FIS，建立视点，使用一个极坐标系，中心点在$C_i$的中心位置，在极坐标系内均匀采样，得到视点集合$VP_i$。<br>对每个$VP$，根据使覆盖范围最大来确定yaw角，覆盖范围计算使根据传感器模型，与已占用的栅格不冲突的边界栅格的数量。<br>并计算两个$VP$的最短时间：<br>$$t_{lb}(x_{k_1,j_1},x_{k_2,j_1})&#x3D;\max{\frac{length(P(p_{k_1,j_1},p_{k_2,j_1}))}{v_{max}}，\frac{min(|\xi_{k_1,j_1}-\xi_{k2,j1}|,2\pi-|\xi_{k_1,j_1}-\xi_{k2,j1}|)}{\dot{\xi}_{max}}}$$<br>其中$P$是用A*算法规划的路径，前一项是位移速度限制，后一项是角速度限制。</p>
+<h2 id="全局规划"><a href="#全局规划" class="headerlink" title="全局规划"></a>全局规划</h2><p>TSP问题，寻找开环回路，假设有$N_{cls}$个类，$M_{tsp}$代表${N_{cls}+1}$维矩阵，主要部分为${N_{cls}\times N_{cls}}$块，则TSP问题为：<br>$$M_{tsp}(k_1,k_2)&#x3D;M_{tsp}(k_2,k_1)&#x3D;t_{lb}(x_{k_1,1},x_{k_2,1}),k_1,k_2\in {1,2,…,N_{cls}}$$<br>$$M_{tsp}(0,k)&#x3D;t_{lb}(x_{0,1},x_{k,1})+\omega_c\cdot c_c(x_{k,1}),k\in {1,2,…,N_{cls}}$$<br>其中$c_c(x_{k,1})$是运动一致性成本，用来惩罚运动方向改变。<br>$$c_c(x_{k,1})&#x3D;cos^{-1}\frac{(p_{k,j}-p_0)\cdot v_0}{||p_{k,j}-p_0||\space ||v_0||}$$<br>最后，通过$M_{tsp}(k,0)&#x3D;0,k\in {1,2,…,N_{cls}}$，将开环TSP问题转化为闭环问题求解，且不会引入额外的cost。</p>
+]]></content>
+      <categories>
+        <category>Exploration</category>
+      </categories>
+      <tags>
+        <tag>FUEL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gaussian Splating</title>
     <url>/GaussianSplating/</url>
     <content><![CDATA[<h1 id="Gaussian-Splatting"><a href="#Gaussian-Splatting" class="headerlink" title="Gaussian Splatting"></a>Gaussian Splatting</h1><p>开山论文：<strong>3D Gaussian Splatting for Real-Time Radiance Field Rendering</strong>  </p>
@@ -393,33 +420,6 @@
         <tag>MatLab</tag>
         <tag>BFS</tag>
         <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>FUEL探索</title>
-    <url>/FUEL%E6%8E%A2%E7%B4%A2/</url>
-    <content><![CDATA[<h2 id="FIS结构"><a href="#FIS结构" class="headerlink" title="FIS结构"></a>FIS结构</h2><p>FUEL采用$FI_i$结构描述环境边界，包含的信息为：</p>
-<ul>
-<li>边界聚类 $F_i$</li>
-<li>所有数据这个类的网格 $C_i$</li>
-<li>$C_i$的中心位置 $p_{avg,i}$</li>
-<li>边界框(AABB) $B_i$</li>
-</ul>
-<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol>
-<li>建立AABB框</li>
-<li>获取传感器信息，在新感知区域建立AABB框</li>
-<li>对比原有AABB框和新AABB框，删除不含边界的AABB框</li>
-<li>利用剩余的AABB框(FIS)更新边界</li>
-<li>判断AABB框对应边界大小，过大则主元分解</li>
-</ol>
-<h2 id="视点建立"><a href="#视点建立" class="headerlink" title="视点建立"></a>视点建立</h2><p>对于每个FIS，建立视点，使用一个极坐标系，中心点在$C_i$的中心位置，在极坐标系内均匀采样，得到视点集合$VP_i$。<br>对每个$VP$，根据使覆盖范围最大来确定yaw角，覆盖范围计算使根据传感器模型，与已占用的栅格不冲突的边界栅格的数量。<br>并计算两个$VP$的最短时间：<br>$$<br>t_{lb}(x_{k_1,j_1},x_{k_2,j_1})&#x3D;\max{\frac{length(P(p_{k_1,j_1},p_{k_2,j_1}))}{v_{max}}，\frac{min(|\xi_{k_1,j_1}-\xi_{k2,j1}|,2\pi-|\xi_{k_1,j_1}-\xi_{k2,j1}|)}{\dot{\xi}_{max}}}<br>$$<br>其中$P$是用A*算法规划的路径，前一项是位移速度限制，后一项是角速度限制。</p>
-<h2 id="全局规划"><a href="#全局规划" class="headerlink" title="全局规划"></a>全局规划</h2><p>TSP问题，寻找开环回路，假设有$N_{cls}$个类，$M_{tsp}$代表${N_{cls}+1}$维矩阵，主要部分为${N_{cls}\times N_{cls}}$块，则TSP问题为：<br>$$<br>M_{tsp}(k_1,k_2)&#x3D;M_{tsp}(k_2,k_1)&#x3D;t_{lb}(x_{k_1,1},x_{k_2,1}),k_1,k_2\in {1,2,…,N_{cls}}$$<br>$$<br>M_{tsp}(0,k)&#x3D;t_{lb}(x_{0,1},x_{k,1})+\omega_c\cdot c_c(x_{k,1}),k\in {1,2,…,N_{cls}}<br>$$<br>其中$c_c(x_{k,1})$是运动一致性成本，用来惩罚运动方向改变。<br>$$<br>c_c(x_{k,1})&#x3D;cos^{-1}\frac{(p_{k,j}-p_0)\cdot v_0}{||p_{k,j}-p_0||\space ||v_0||}<br>$$<br>最后，通过$M_{tsp}(k,0)&#x3D;0,k\in {1,2,…,N_{cls}}$，将开环TSP问题转化为闭环问题求解，且不会引入额外的cost。</p>
-]]></content>
-      <categories>
-        <category>Exploration</category>
-      </categories>
-      <tags>
-        <tag>FUEL</tag>
       </tags>
   </entry>
 </search>
