@@ -62,10 +62,11 @@
 <li>获取传感器信息，在新感知区域建立AABB框</li>
 <li>对比原有AABB框和新AABB框，删除不含边界的AABB框</li>
 <li>利用剩余的AABB框(FIS)更新边界</li>
-<li>判断AABB框对应边界大小，过大则主元分解</li>
+<li>判断AABB框对应边界大小，过大则主元分解<br><img src="/FUEL%E6%8E%A2%E7%B4%A2/fuel1.png" alt="Adaptive Control"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
 </ol>
-<h2 id="视点建立"><a href="#视点建立" class="headerlink" title="视点建立"></a>视点建立</h2><p>对于每个FIS，建立视点，使用一个极坐标系，中心点在$C_i$的中心位置，在极坐标系内均匀采样，得到视点集合$VP_i$。<br>对每个$VP$，根据使覆盖范围最大来确定yaw角，覆盖范围计算使根据传感器模型，与已占用的栅格不冲突的边界栅格的数量。<br>并计算两个$VP$的最短时间：<br>$$t_{lb}(x_{k_1,j_1},x_{k_2,j_1})&#x3D;\max{\frac{length(P(p_{k_1,j_1},p_{k_2,j_1}))}{v_{max}}，\frac{min(|\xi_{k_1,j_1}-\xi_{k2,j1}|,2\pi-|\xi_{k_1,j_1}-\xi_{k2,j1}|)}{\dot{\xi}_{max}}}$$<br>其中$P$是用A*算法规划的路径，前一项是位移速度限制，后一项是角速度限制。</p>
+<h2 id="视点建立"><a href="#视点建立" class="headerlink" title="视点建立"></a>视点建立</h2><p>对于每个FIS，建立视点，使用一个极坐标系，中心点在$C_i$的中心位置，在极坐标系内均匀采样，得到视点集合$VP_i$。<br><img src="/FUEL%E6%8E%A2%E7%B4%A2/fuel2.png" alt="Adaptive Control"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>对每个$VP$，根据使覆盖范围最大来确定yaw角，覆盖范围计算使根据传感器模型，与已占用的栅格不冲突的边界栅格的数量。<br>并计算两个$VP$的最短时间：<br>$$t_{lb}(x_{k_1,j_1},x_{k_2,j_1})&#x3D;\max{\frac{length(P(p_{k_1,j_1},p_{k_2,j_1}))}{v_{max}}，\frac{min(|\xi_{k_1,j_1}-\xi_{k2,j1}|,2\pi-|\xi_{k_1,j_1}-\xi_{k2,j1}|)}{\dot{\xi}_{max}}}$$<br>其中$P$是用A*算法规划的路径，前一项是位移速度限制，后一项是角速度限制。</p>
 <h2 id="全局规划"><a href="#全局规划" class="headerlink" title="全局规划"></a>全局规划</h2><p>TSP问题，寻找开环回路，假设有$N_{cls}$个类，$M_{tsp}$代表${N_{cls}+1}$维矩阵，主要部分为${N_{cls}\times N_{cls}}$块，则TSP问题为：<br>$$M_{tsp}(k_1,k_2)&#x3D;M_{tsp}(k_2,k_1)&#x3D;t_{lb}(x_{k_1,1},x_{k_2,1}),k_1,k_2\in {1,2,…,N_{cls}}$$<br>$$M_{tsp}(0,k)&#x3D;t_{lb}(x_{0,1},x_{k,1})+\omega_c\cdot c_c(x_{k,1}),k\in {1,2,…,N_{cls}}$$<br>其中$c_c(x_{k,1})$是运动一致性成本，用来惩罚运动方向改变。<br>$$c_c(x_{k,1})&#x3D;cos^{-1}\frac{(p_{k,j}-p_0)\cdot v_0}{||p_{k,j}-p_0||\space ||v_0||}$$<br>最后，通过$M_{tsp}(k,0)&#x3D;0,k\in {1,2,…,N_{cls}}$，将开环TSP问题转化为闭环问题求解，且不会引入额外的cost。</p>
+<h2 id="局部规划"><a href="#局部规划" class="headerlink" title="局部规划"></a>局部规划</h2><p>全局规划只是找到了访问所有聚类的最佳顺序，但是只涉及每个类都单个视点，不一定是所有视点中的最佳组合。<br>因此，在局部路径规划中，以当前位置做一个半径圆，在该圆内同时再取一些其他的视点，将这些在半径中的视点进行全连接，然后通过dijkstra算法寻找最优路径$E&#x3D;{x_{1,j_1},x_{2,j_2},…,x_{N_{rf},j_{N_{rf}}}}$。<br>$$c_{rf}(E)&#x3D;t_{lb}(x_0,x_{1,j_1})+\omega_c\cdot c_c(x_{1,j_1})+t_{lb}(x_{N_{rf}+1,1})+\sum_{k&#x3D;1}^{N_{rf}-1}t_{lb}(x_{k,j_k},x_{k+1,j_{k+1}})$$<br><img src="/FUEL%E6%8E%A2%E7%B4%A2/fuel3.png" alt="Adaptive Control"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 ]]></content>
       <categories>
         <category>Exploration</category>
