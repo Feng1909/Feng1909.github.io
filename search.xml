@@ -470,9 +470,9 @@
   <entry>
     <title>DUST3r</title>
     <url>/Dust3r/</url>
-    <content><![CDATA[<h2 id="DUST3r"><a href="#DUST3r" class="headerlink" title="DUST3r"></a>DUST3r</h2><p>github连接：<a href="https://github.com/naver/dust3r">DUST3r</a><br><img src="/Screenshot%20from%202024-08-28%2009-09-21.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>DUSt3R是一种旨在简化几何3D视觉任务的新框架。作者着重于使3D重建过程更加易于使用和高效。该框架利用深度学习和几何处理的最新进展，提高了准确性并降低了计算复杂性。 </p>
+    <content><![CDATA[<h2 id="DUST3r"><a href="#DUST3r" class="headerlink" title="DUST3r"></a>DUST3r</h2><p>github连接：<a href="https://github.com/naver/dust3r">DUST3r</a><br><img src="/Dust3r/2.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>DUSt3R是一种旨在简化几何3D视觉任务的新框架。作者着重于使3D重建过程更加易于使用和高效。该框架利用深度学习和几何处理的最新进展，提高了准确性并降低了计算复杂性。 </p>
 <p>DUSt3R以一组不受约束的图像为输入，输出点图(pointmaps)，从这些点图可以直接推导出各种几何量。</p>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="/Screenshot%20from%202024-08-28%2009-17-33.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="/Dust3r/1.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><strong>输入：</strong> 两张不受约束的图像</p>
 <p>通过共享权重的ViT网络生成两个token，返回在解码器中进行联合推理，在解码器传递过程中，两个分支之间不断共享信息。这对于输出正确对齐的点图至关重要。也就是说，每个解码器块关注来自另一个分支的token：<br>$$G_i^1 &#x3D; DecoderBlock_i^1 (G^1_{i-1}, G^2_{i-1})$$<br>$$G_i^2 &#x3D; DecoderBlock_i^2 (G^2_{i-1}, G^1_{i-1})$$<br><strong>输出：</strong> 经过Head处理后输出点云图和置信图，点云图的坐标系为第一张图片的坐标系。</p>
 <h3 id="训练目标"><a href="#训练目标" class="headerlink" title="训练目标"></a>训练目标</h3><ol>
