@@ -464,13 +464,14 @@
         <category>COLMAP</category>
       </categories>
       <tags>
+        <tag>3D Reconstruction</tag>
         <tag>GaussianSplating</tag>
       </tags>
   </entry>
   <entry>
-    <title>DUST3r</title>
+    <title>DUSt3R</title>
     <url>/Dust3r/</url>
-    <content><![CDATA[<h2 id="DUST3r"><a href="#DUST3r" class="headerlink" title="DUST3r"></a>DUST3r</h2><p>github连接：<a href="https://github.com/naver/dust3r">DUST3r</a><br><img src="/Dust3r/2.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>DUSt3R是一种旨在简化几何3D视觉任务的新框架。作者着重于使3D重建过程更加易于使用和高效。该框架利用深度学习和几何处理的最新进展，提高了准确性并降低了计算复杂性。 </p>
+    <content><![CDATA[<h2 id="DUST3r"><a href="#DUST3r" class="headerlink" title="DUST3r"></a>DUST3r</h2><p>github连接：<a href="https://github.com/naver/dust3r">DUSt3R</a><br><img src="/Dust3r/2.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>DUSt3R是一种旨在简化几何3D视觉任务的新框架。作者着重于使3D重建过程更加易于使用和高效。该框架利用深度学习和几何处理的最新进展，提高了准确性并降低了计算复杂性。 </p>
 <p>DUSt3R以一组不受约束的图像为输入，输出点图(pointmaps)，从这些点图可以直接推导出各种几何量。</p>
 <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="/Dust3r/1.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><strong>输入：</strong> 两张不受约束的图像</p>
@@ -492,10 +493,32 @@
 </ol>
 ]]></content>
       <categories>
-        <category>COLMAP</category>
+        <category>GaussianSplating</category>
       </categories>
       <tags>
+        <tag>3D Reconstruction</tag>
+        <tag>DUSt3R</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>InstantSplat</title>
+    <url>/InstantSplat/</url>
+    <content><![CDATA[<h1 id="InstantSplat"><a href="#InstantSplat" class="headerlink" title="InstantSplat"></a>InstantSplat</h1><p>github连接：<a href="https://github.com/NVlabs/InstantSplat">InstantSplat</a><br><img src="/InstantSplat/1.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设计用于处理大规模场景、稀疏视图和无姿态条件。InstantSplat通过结合3D高斯溅射（3D-GS）和端到端密集立体模型（DUSt3R）的优势，能够在不到一分钟内从稀疏和无姿态的图像中重建出高质量的3D场景，并生成准确的新视图。</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="/InstantSplat/2.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ol>
+<li>使用DUSt3R生成稠密点云</li>
+<li>基于生成的稠密点云使用3D-GS进行优化，具体是进行1000次迭代，但不进行稠密化、分裂、重置透明度等操作</li>
+<li>联合优化姿势和属性<br>根据公式<br>$$S*, T*&#x3D;{\arg \min}<em>{S, T} \sum</em>{v\in N}\sum^{HW}_{i&#x3D;1}||\widetilde{C}_v^i(S, T)-C_v^i(S, T)||+\lambda \cdot ||T-T0||$$<br>其中$S$代表3D高斯点集合，$T$代表相机外参，$C$代表渲染函数，$T0$代表初始值，上述公式保证了在优化位姿的时候不会过于远离初始值。</li>
+<li>在测试视图上对齐相机姿态<br>在实际应用中，测试视图的相机姿态可能是未知的或带有噪声的，这会影响最终渲染图像的准确性和一致性。首先，在训练视图上训练了一个3DGS模型，并保持3DGS模型在测试阶段是冻结的，即不对其参数进行进一步的调整。然后，他们专注于单独优化测试视图的相机姿态，目标是最小化由这个模型渲染的图像与实际测试视图之间的光度差异。这个过程涉及到调整相机姿态，直到渲染出的图像与真实图像在视觉上尽可能相似。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>GaussianSplating</category>
+      </categories>
+      <tags>
+        <tag>3D Reconstruction</tag>
         <tag>DUST3r</tag>
+        <tag>InstantSplat</tag>
       </tags>
   </entry>
 </search>
