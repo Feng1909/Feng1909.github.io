@@ -169,10 +169,16 @@
     <content><![CDATA[<h1 id="InstantSplat"><a href="#InstantSplat" class="headerlink" title="InstantSplat"></a>InstantSplat</h1><p>github连接：<a href="https://github.com/NVlabs/InstantSplat">InstantSplat</a><br><img src="/InstantSplat/1.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设计用于处理大规模场景、稀疏视图和无姿态条件。InstantSplat通过结合3D高斯溅射（3D-GS）和端到端密集立体模型（DUSt3R）的优势，能够在不到一分钟内从稀疏和无姿态的图像中重建出高质量的3D场景，并生成准确的新视图。</p>
 <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="/InstantSplat/2.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <ol>
-<li>使用DUSt3R生成稠密点云</li>
-<li>基于生成的稠密点云使用3D-GS进行优化，具体是进行1000次迭代，但不进行稠密化、分裂、重置透明度等操作</li>
-<li>联合优化姿势和属性<br>根据公式<br>$$S*, T*&#x3D;{\arg \min}<em>{S, T} \sum</em>{v\in N}\sum^{HW}_{i&#x3D;1}||\widetilde{C}_v^i(S, T)-C_v^i(S, T)||+\lambda \cdot ||T-T0||$$<br>其中$S$代表3D高斯点集合，$T$代表相机外参，$C$代表渲染函数，$T0$代表初始值，上述公式保证了在优化位姿的时候不会过于远离初始值。</li>
-<li>在测试视图上对齐相机姿态<br>在实际应用中，测试视图的相机姿态可能是未知的或带有噪声的，这会影响最终渲染图像的准确性和一致性。首先，在训练视图上训练了一个3DGS模型，并保持3DGS模型在测试阶段是冻结的，即不对其参数进行进一步的调整。然后，他们专注于单独优化测试视图的相机姿态，目标是最小化由这个模型渲染的图像与实际测试视图之间的光度差异。这个过程涉及到调整相机姿态，直到渲染出的图像与真实图像在视觉上尽可能相似。</li>
+<li><p>使用DUSt3R生成稠密点云</p>
+</li>
+<li><p>基于生成的稠密点云使用3D-GS进行优化，具体是进行1000次迭代，但不进行稠密化、分裂、重置透明度等操作</p>
+</li>
+<li><p>联合优化姿势和属性<br>根据公式</p>
+<p>$$S*, T*&#x3D;{\arg \min}<em>{S, T} \sum</em>{v\in N}\sum^{HW}_{i&#x3D;1}||\widetilde{C}_v^i(S, T)-C_v^i(S, T)||+\lambda \cdot ||T-T0||$$</p>
+<p>其中$S$代表3D高斯点集合，$T$代表相机外参，$C$代表渲染函数，$T0$代表初始值，上述公式保证了在优化位姿的时候不会过于远离初始值。</p>
+</li>
+<li><p>在测试视图上对齐相机姿态<br>在实际应用中，测试视图的相机姿态可能是未知的或带有噪声的，这会影响最终渲染图像的准确性和一致性。首先，在训练视图上训练了一个3DGS模型，并保持3DGS模型在测试阶段是冻结的，即不对其参数进行进一步的调整。然后，他们专注于单独优化测试视图的相机姿态，目标是最小化由这个模型渲染的图像与实际测试视图之间的光度差异。这个过程涉及到调整相机姿态，直到渲染出的图像与真实图像在视觉上尽可能相似。</p>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -522,6 +528,24 @@
         <tag>MatLab</tag>
         <tag>BFS</tag>
         <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nerfstudio</title>
+    <url>/nerfstudio/</url>
+    <content><![CDATA[<h2 id="nerfstudio"><a href="#nerfstudio" class="headerlink" title="nerfstudio"></a>nerfstudio</h2><p>Nerfstudio，一个用于NeRF开发的模块化PyTorch框架。框架中用于实现基于NeRF的方法的组件即插即用，使得研究人员和相关从业者可以轻松地将NeRF集成到自己的项目中。框架的模块化设计支持实时可视化工具，导入用户真实世界捕获的数据集外（in-the-wild）数据，以及导出为视频，点云和网格表示的工具。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>官网安装方式可能会导致tiny-cuda-nn安装失败</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create --name nerfstudio -y python=3.8</span><br><span class="line">conda activate nerfstudio</span><br><span class="line"></span><br><span class="line">conda install pytorch==2.1.2 torchvision==0.16.2 pytorch-cuda=11.8 -c pytorch -c nvidia</span><br><span class="line">pip install ninja git+https://gitee.com/Xiaoshier2021/tiny-cuda-nn/<span class="comment">#subdirectory=bindings/torch</span></span><br><span class="line">conda install -c <span class="string">&quot;nvidia/label/cuda-11.8.0&quot;</span> cuda-toolkit</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/nerfstudio-project/nerfstudio.git</span><br><span class="line"><span class="built_in">cd</span> nerfstudio</span><br><span class="line">pip install -e .</span><br></pre></td></tr></table></figure>
+
+<h3 id="前处理数据"><a href="#前处理数据" class="headerlink" title="前处理数据"></a>前处理数据</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ns-process-data images --data ~/data_nerf/images/ --output-dir ~/data_nerf/out/</span><br></pre></td></tr></table></figure>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ns-train nerfacto --data ~/data_nerf/out/ --vis viewer+tensorboard</span><br></pre></td></tr></table></figure>
+<p>可视化工具：<a href="http://localhost:7007/">http://localhost:7007/</a></p>
+<h3 id="评测"><a href="#评测" class="headerlink" title="评测"></a>评测</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ns-eval --load-config outputs/out/nerfacto/2024-09-20_100756/config.yml --output_path outputs/out/nerfacto/result.json --render-output-path outputs/out/nerfacto/render</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Nerf</category>
+      </categories>
+      <tags>
+        <tag>3D Reconstruction</tag>
       </tags>
   </entry>
 </search>
