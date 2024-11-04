@@ -548,4 +548,64 @@
         <tag>3D Reconstruction</tag>
       </tags>
   </entry>
+  <entry>
+    <title>orin nx 重装</title>
+    <url>/orin-nx-%E9%87%8D%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="刷写系统镜像"><a href="#刷写系统镜像" class="headerlink" title="刷写系统镜像"></a>刷写系统镜像</h2><ol>
+<li>使用USB线缆连接ORIN的OTG-USB端口与Ubuntu系统开发主机的USB端口</li>
+<li>将REC按键按下不松开，然后给系统供电，按键保持3秒以上，释放REC按键</li>
+<li>在主机终端显示界面输入 lsusb，若有显示NVIDIA设备，则成功进入Recovery恢复模式，此时可进行后续刷机，备份等操作</li>
+<li>下载<a href="https://developer.nvidia.com/sdk-manager">Orin NX SDK</a></li>
+<li>刷写Jetson 5.1.3 （注：只能刷5.1.3，5.1.2和5.1.4都不行）<br> <img src="/orin-nx-%E9%87%8D%E8%A3%85/1.png" alt="刷写镜像"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br> 刷写完成后点击skip，然后点击finish</li>
+<li>重启设备，进入系统</li>
+<li>安装阿木的补丁 <a href="https://download.amovlab.com/orin_nx/amov-orin-jetson3550.deb">https://download.amovlab.com/orin_nx/amov-orin-jetson3550.deb</a><br><strong>注：</strong> Jetson Pack 5.x是Ubuntu 20.04，Jetson Pack 6.x是Ubuntu 22.04</li>
+</ol>
+<h2 id="安装GPU相关库"><a href="#安装GPU相关库" class="headerlink" title="安装GPU相关库"></a>安装GPU相关库</h2><ol>
+<li>安装CUDA 11.4<br><code>sudo apt-get install cuda-11.4</code></li>
+<li>安装cuDNN 8<br> <code>sudo apt-get install libcudnn8</code></li>
+<li>安装TensorRT<br> 下载这个tar包和deb包<br> <img src="/orin-nx-%E9%87%8D%E8%A3%85/2.png" alt="TensorRT"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><ol>
+<li>系统安装TensorRT <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i nv-tensorrt-repo-ubuntu2004-cuda11.4-trt8.2.5.1-ga-20220505_1-1_arm64.deb</span><br><span class="line">sudo apt-get install tensorrt</span><br></pre></td></tr></table></figure></li>
+<li>安装TensorRT的Python库<br> 解压刚刚下载的tar包，进入python文件夹，pip安装对应版本的whl文件</li>
+</ol>
+</li>
+<li>OpenCV4安装 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://download.amovlab.com/model/install/common/opencv470-install.sh</span><br><span class="line"><span class="built_in">chmod</span> +x opencv470-install.sh</span><br><span class="line">./opencv470-install.sh</span><br></pre></td></tr></table></figure>
+ 可以将sh脚本里的with_CUDA改为ON，以此安装VINS-GPU</li>
+</ol>
+]]></content>
+      <categories>
+        <category>无人机</category>
+      </categories>
+      <tags>
+        <tag>Orin NX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vins回环检测</title>
+    <url>/vins%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B/</url>
+    <content><![CDATA[<h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>在使用Mast3r进行三维重建的时候，原始方法是对n张图片通过n*(n-1)的复杂度进行遍历匹配，但是这种方法太费时：50张图需要2450次匹配，单次匹配需要0.3秒(Nvidia RTX 3060)，共计需要12分钟。</p>
+<p>当手动选取具有共视区的图像对时，只选取了241组配对图片，只需要1.2分钟即可匹配完成，因此根据共视区选取图像对的方法，可以大大减少匹配时间。</p>
+<h2 id="回环检测"><a href="#回环检测" class="headerlink" title="回环检测"></a>回环检测</h2><p>在当前的研究中，可以完成共视区计算的算法主要应用与SLAM的回环检测中，回环检测是SLAM中的一个重要环节，它可以提高地图的一致性，减少累积误差，提高定位的精度。常用算法有ORB、VINS等。</p>
+<p>因此可以选用VINS的回环检测算法，通过计算共视区，选取具有共视区的图像对，减少匹配时间。</p>
+<h2 id="VINS回环检测"><a href="#VINS回环检测" class="headerlink" title="VINS回环检测"></a>VINS回环检测</h2><p>VINS回环检测的主要流程如下：</p>
+<ol>
+<li>利用DBoW2进行回环检测。</li>
+<li>除了用于单目VIO的角点特征外，还添加了500个角点并使用BRIEF描述子描述。额外的角点特征用于在回环检测中实现更好的召回率。</li>
+<li>DBoW2在时间和空间一致性检查后返回回环检测候选帧。</li>
+<li>VINS保留所有用于特征检索的BRIEF描述子，丢弃原始图像以减少内存消耗。</li>
+<li>检测到回环时，通过BRIEF描述子匹配找到对应关系，建立局部滑动窗口与回环候选帧之间的连接。</li>
+</ol>
+<p>算法流程图为：<br><img src="/vins%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B/vins.png" alt="alt text"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="DBoW2"><a href="#DBoW2" class="headerlink" title="DBoW2"></a>DBoW2</h3><p>DBoW2是一个用于图像检索的库，它可以用于回环检测。</p>
+<p>代码为：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">KeyFrame::computeWindowBRIEFPoint</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">BriefExtractor <span class="title">extractor</span><span class="params">(BRIEF_PATTERN_FILE.c_str())</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)point_2d_uv.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">	    cv::KeyPoint key;</span><br><span class="line">	    key.pt = point_2d_uv[i];</span><br><span class="line">	    window_keypoints.<span class="built_in">push_back</span>(key);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">extractor</span>(image, window_keypoints, window_brief_descriptors);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">KeyFrame::computeBRIEFPoint</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">BriefExtractor <span class="title">extractor</span><span class="params">(BRIEF_PATTERN_FILE.c_str())</span></span>;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> fast_th = <span class="number">20</span>; <span class="comment">// corner detector response threshold</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="number">1</span>)</span><br><span class="line">		cv::<span class="built_in">FAST</span>(image, keypoints, fast_th, <span class="literal">true</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		vector&lt;cv::Point2f&gt; tmp_pts;</span><br><span class="line">		cv::<span class="built_in">goodFeaturesToTrack</span>(image, tmp_pts, <span class="number">500</span>, <span class="number">0.01</span>, <span class="number">10</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)tmp_pts.<span class="built_in">size</span>(); i++)</span><br><span class="line">		&#123;</span><br><span class="line">		    cv::KeyPoint key;</span><br><span class="line">		    key.pt = tmp_pts[i];</span><br><span class="line">		    keypoints.<span class="built_in">push_back</span>(key);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">extractor</span>(image, keypoints, brief_descriptors);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)keypoints.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Eigen::Vector3d tmp_p;</span><br><span class="line">		m_camera-&gt;<span class="built_in">liftProjective</span>(Eigen::<span class="built_in">Vector2d</span>(keypoints[i].pt.x, keypoints[i].pt.y), tmp_p);</span><br><span class="line">		cv::KeyPoint tmp_norm;</span><br><span class="line">		tmp_norm.pt = cv::<span class="built_in">Point2f</span>(tmp_p.<span class="built_in">x</span>()/tmp_p.<span class="built_in">z</span>(), tmp_p.<span class="built_in">y</span>()/tmp_p.<span class="built_in">z</span>());</span><br><span class="line">		keypoints_norm.<span class="built_in">push_back</span>(tmp_norm);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SLAM</category>
+      </categories>
+      <tags>
+        <tag>vins</tag>
+        <tag>共视区</tag>
+        <tag>特征点</tag>
+        <tag>回环检测</tag>
+      </tags>
+  </entry>
 </search>
