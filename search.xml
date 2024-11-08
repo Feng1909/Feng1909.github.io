@@ -18,7 +18,7 @@
 <h3 id="下游应用"><a href="#下游应用" class="headerlink" title="下游应用"></a>下游应用</h3><ol>
 <li>点匹配<br>通过最近邻算法，建立两个图像像素之间的对应关系。</li>
 <li>恢复相机内参<br>假设主点大致位于中心，像素为正方形，因此只需估计焦点$f$。</li>
-<li>相对姿态估计<br>执行 2D 匹配并恢复内参矩阵，然后估计外极矩阵并恢复相对姿态；或者使用 Procrustes 对齐比较点图获得相对姿态</li>
+<li>相对姿态估计<br>执行 2D 匹配并恢复内参矩阵，然后估计对极矩阵并恢复相对姿态；或者使用 Procrustes 对齐比较点图获得相对姿态<br>参考我的另一篇文章<a href="https://blog.fengyunji.site/%E5%AF%B9%E6%9E%81%E5%87%A0%E4%BD%95/">对极几何</a></li>
 <li>绝对姿态估计</li>
 </ol>
 <h3 id="全局对齐"><a href="#全局对齐" class="headerlink" title="全局对齐"></a>全局对齐</h3><ol>
