@@ -28,11 +28,11 @@
 </ol>
 ]]></content>
       <categories>
-        <category>GaussianSplating</category>
+        <category>三维重建</category>
       </categories>
       <tags>
         <tag>DUSt3R</tag>
-        <tag>3D Reconstruction</tag>
+        <tag>GaussianSplating</tag>
       </tags>
   </entry>
   <entry>
@@ -157,10 +157,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>GaussianSplating</category>
+        <category>三维重建</category>
       </categories>
       <tags>
-        <tag>3D Reconstruction</tag>
+        <tag>GaussianSplating</tag>
       </tags>
   </entry>
   <entry>
@@ -182,12 +182,12 @@
 </ol>
 ]]></content>
       <categories>
-        <category>GaussianSplating</category>
+        <category>三维重建</category>
       </categories>
       <tags>
-        <tag>3D Reconstruction</tag>
         <tag>DUST3r</tag>
         <tag>InstantSplat</tag>
+        <tag>GaussianSplating</tag>
       </tags>
   </entry>
   <entry>
@@ -365,11 +365,11 @@
 <p>其中，<code>CameraInfo</code>包含了相机位姿，图片，图片路径等信息，<code>uid</code>为相机ID，<code>R</code>为旋转矩阵，<code>T</code>为平移向量，<code>FovY</code>和<code>FovX</code>为视场角，<code>image</code>为图片，<code>image_path</code>为图片路径，<code>image_name</code>为图片名称，<code>width</code>和<code>height</code>为图片宽高，仅需自行输入<code>R</code>，<code>T</code>即可</p>
 ]]></content>
       <categories>
-        <category>COLMAP</category>
+        <category>三维重建</category>
       </categories>
       <tags>
-        <tag>3D Reconstruction</tag>
         <tag>GaussianSplating</tag>
+        <tag>COLMAP</tag>
       </tags>
   </entry>
   <entry>
