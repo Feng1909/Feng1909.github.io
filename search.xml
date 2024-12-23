@@ -636,4 +636,20 @@
         <tag>SFM</tag>
       </tags>
   </entry>
+  <entry>
+    <title>git submodule使用</title>
+    <url>/submodule/</url>
+    <content><![CDATA[<h2 id="在项目中使用子模块"><a href="#在项目中使用子模块" class="headerlink" title="在项目中使用子模块"></a>在项目中使用子模块</h2><h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule add +仓库地址 +本地路径</span><br></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule add https://github.com/xxx/xxx.git ./submodule/xxx</span><br></pre></td></tr></table></figure>
+<p>如果提示该仓库已经存在，应清除该仓库的缓存：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached ./submodule/xxx</span><br></pre></td></tr></table></figure>
+<h3 id="克隆项目"><a href="#克隆项目" class="headerlink" title="克隆项目"></a>克隆项目</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recurse-submodules +仓库地址</span><br></pre></td></tr></table></figure>
+<h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+<p>其中<code>--init</code>表示初始化子模块，<code>--recursive</code>表示递归更新子模块。</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>

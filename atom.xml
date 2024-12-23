@@ -6,7 +6,7 @@
   <link href="https://blog.fengyunji.site/atom.xml" rel="self"/>
   
   <link href="https://blog.fengyunji.site/"/>
-  <updated>2024-11-08T07:27:48.653Z</updated>
+  <updated>2024-12-23T08:05:32.023Z</updated>
   <id>https://blog.fengyunji.site/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git submodule使用</title>
+    <link href="https://blog.fengyunji.site/submodule/"/>
+    <id>https://blog.fengyunji.site/submodule/</id>
+    <published>2024-12-23T08:02:27.000Z</published>
+    <updated>2024-12-23T08:05:32.023Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="在项目中使用子模块"><a href="#在项目中使用子模块" class="headerlink" title="在项目中使用子模块"></a>在项目中使用子模块</h2><h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add +仓库地址 +本地路径</span><br></pre></td></tr></table></figure><p>比如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/xxx/xxx.git ./submodule/xxx</span><br></pre></td></tr></table></figure><p>如果提示该仓库已经存在，应清除该仓库的缓存：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached ./submodule/xxx</span><br></pre></td></tr></table></figure><h3 id="克隆项目"><a href="#克隆项目" class="headerlink" title="克隆项目"></a>克隆项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recurse-submodules +仓库地址</span><br></pre></td></tr></table></figure><h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure><p>其中<code>--init</code>表示初始化子模块，<code>--recursive</code>表示递归更新子模块。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;在项目中使用子模块&quot;&gt;&lt;a href=&quot;#在项目中使用子模块&quot; class=&quot;headerlink&quot; title=&quot;在项目中使用子模块&quot;&gt;&lt;/a&gt;在项目中使用子模块&lt;/h2&gt;&lt;h3 id=&quot;添加子模块&quot;&gt;&lt;a href=&quot;#添加子模块&quot; class=&quot;header</summary>
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://blog.fengyunji.site/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>对极几何</title>
@@ -516,34 +538,6 @@
     <category term="BFS" scheme="https://blog.fengyunji.site/tags/BFS/"/>
     
     <category term="递归" scheme="https://blog.fengyunji.site/tags/%E9%80%92%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu18.04安装ros melodic</title>
-    <link href="https://blog.fengyunji.site/Ubuntu18.04%E5%AE%89%E8%A3%85ros%20melodic/"/>
-    <id>https://blog.fengyunji.site/Ubuntu18.04%E5%AE%89%E8%A3%85ros%20melodic/</id>
-    <published>2022-01-14T07:43:58.000Z</published>
-    <updated>2024-06-04T05:54:44.944Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Ubuntu18-04安装ros-melodic"><a href="#Ubuntu18-04安装ros-melodic" class="headerlink" title="Ubuntu18.04安装ros melodic"></a>Ubuntu18.04安装ros melodic</h1><p><strong>目前认为比较稳定的安装方案，无需翻墙。 ——BITFSD</strong></p><h2 id="换源（系统源）"><a href="#换源（系统源）" class="headerlink" title="换源（系统源）"></a>换源（系统源）</h2><ul><li><p>意义：Ubuntu默认源的服务器在国外，由于相关法律法规的限制，大陆对国外服务器的访问速率极慢，因此需要采用国内的镜像源进行替代。经过多次尝试，我们推荐使用中科大源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/apt/sources.list</span><br></pre></td></tr></table></figure><p>这一句指令会要求输入密码，Linux系统的保密措施使得键盘的输入不会在终端里显示</p><p><code>gedit</code>是一个文本软件，相当于Windows系统的记事本</p><p>将以下内容复制进刚才打开的文本框里，删除文本框里原有的一大堆东西</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure></li><li><p>完成上述步骤后，在终端内输入：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure></li><li><p>再次执行例如<code>sudo apt-get install</code>等命令时发现下载速率有了极大提升</p></li></ul><h2 id="安装ros"><a href="#安装ros" class="headerlink" title="安装ros"></a>安装ros</h2><ul><li><p>以下内容可参考<a href="https://wiki.ros.org/">ros官网</a></p></li><li><p>选择下载源（ros源），我们仍然推荐使用中科大源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c <span class="string">&#x27;. /etc/lsb-release &amp;&amp; echo &quot;deb http://mirrors.ustc.edu.cn/ros/ubuntu/ `lsb_release -cs` main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#x27;</span></span><br></pre></td></tr></table></figure></li><li><p>设置密匙</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl <span class="comment"># if you haven&#x27;t already installed curl</span></span><br><span class="line">curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -</span><br></pre></td></tr></table></figure></li><li><p>更新源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></li><li><p>安装ros-desktop</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ros-melodic-desktop-full</span><br></pre></td></tr></table></figure><p><strong>这一步结束后并不代表ros安装完成</strong></p></li><li><p>设置环境变量</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source /opt/ros/melodic/setup.bash&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure><p><code>.bashrc</code>文件中保存的环境变量在每次开启终端的时候会自动加载入新终端内，若要手动刷新，可使用<code>source ~/.bashrc</code>命令，<code>~</code>符号代表主目录</p><p>若使用主题，比如zsh主题（可以美化终端），则运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source /opt/ros/melodic/setup.zsh&quot;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></li><li><p>准备依赖包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential</span><br></pre></td></tr></table></figure></li><li><p>初始化rosdep</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python-rosdep</span><br><span class="line">sudo rosdep init</span><br><span class="line">rosdep update</span><br></pre></td></tr></table></figure><p>不出意外在运行前两个命令后，第三个命令会运行失败，终端报错显示超时，这是因为<code>rosdep update</code>命令会请求远程服务器，而这个服务器位于国外，所以，我们对默认的地址进行修改，采用国内的镜像进行替代</p></li><li><p>以下内容参考<a href="https://mp.weixin.qq.com/s/mghnF4sesImHpg4ScZ-bRA">ROS rosdep init&#x2F;update百分百解决 (qq.com)</a></p></li></ul><ol><li><p>修改<code>20-default.list</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ros/rosdep/sources.list.d</span><br><span class="line">sudo gedit 20-default.list </span><br></pre></td></tr></table></figure><p>将内容替换为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># os-specific listings first rosdep update</span></span><br><span class="line">yaml https://gitee.com/wybros/rosdistro/raw/master/rosdep/osx-homebrew.yaml osx</span><br><span class="line"></span><br><span class="line"><span class="comment"># generic</span></span><br><span class="line">yaml https://gitee.com/wybros/rosdistro/raw/master/rosdep/base.yaml</span><br><span class="line">yaml https://gitee.com/wybros/rosdistro/raw/master/rosdep/python.yaml</span><br><span class="line">yaml https://gitee.com/wybros/rosdistro/raw/master/rosdep/ruby.yaml</span><br><span class="line">gbpdistro https://gitee.com/wybros/rosdistro/raw/master/releases/fuerte.yaml fuerte</span><br><span class="line"></span><br><span class="line"><span class="comment"># newer distributions (Groovy, Hydro, ...) must not be listed anymore, they are being fetched from the rosdistro index.yaml instead</span></span><br></pre></td></tr></table></figure></li><li><p>修改<code>gbpdistro_support.py</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/lib/python2.7/dist-packages/rosdep2/</span><br><span class="line">sudo gedit gbpdistro_support.py</span><br></pre></td></tr></table></figure><p>将里面所有的 <code>raw.githubusercontent.com/ros/rosdistro/master</code><br>替换成<code>gitee.com/wybros/rosdistro/raw/master </code></p></li><li><p>修改<code>rep3.py</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/lib/python2.7/dist-packages/rosdep2/</span><br><span class="line">sudo gedit rep3.py</span><br></pre></td></tr></table></figure><p>将里面所有的 <code>raw.githubusercontent.com/ros/rosdistro/master</code><br>替换成<code>gitee.com/wybros/rosdistro/raw/master </code></p></li><li><p>修改<code>sources_list.py</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/lib/python2.7/dist-packages/rosdep2/</span><br><span class="line">sudo gedit sources_list.py</span><br></pre></td></tr></table></figure><p>将里面所有的 <code>raw.githubusercontent.com/ros/rosdistro/master</code><br>替换成<code>gitee.com/wybros/rosdistro/raw/master </code></p></li><li><p>修改<code>__init__.py</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/lib/python2.7/dist-packages/rosdistro/</span><br><span class="line">sudo gedit __init__.py</span><br></pre></td></tr></table></figure><p>将里面所有的 <code>raw.githubusercontent.com/ros/rosdistro/master</code><br>替换成<code>gitee.com/wybros/rosdistro/raw/master </code></p></li></ol><ul><li>最后再次执行<code>rosdep update</code>，等待片刻即可安装成功</li></ul><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><ul><li>新建终端，输入<code>roscore</code>，无报错</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Ubuntu18-04安装ros-melodic&quot;&gt;&lt;a href=&quot;#Ubuntu18-04安装ros-melodic&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu18.04安装ros melodic&quot;&gt;&lt;/a&gt;Ubuntu18.04安装r</summary>
-      
-    
-    
-    
-    <category term="ROS" scheme="https://blog.fengyunji.site/categories/ROS/"/>
-    
-    
-    <category term="ROS" scheme="https://blog.fengyunji.site/tags/ROS/"/>
-    
-    <category term="FSAC" scheme="https://blog.fengyunji.site/tags/FSAC/"/>
-    
-    <category term="Linux" scheme="https://blog.fengyunji.site/tags/Linux/"/>
     
   </entry>
   
