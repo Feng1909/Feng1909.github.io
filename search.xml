@@ -652,4 +652,43 @@
         <tag>Linux</tag>
       </tags>
   </entry>
+  <entry>
+    <title>斯坦福大学GibsonEnv环境搭建</title>
+    <url>/%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%A4%A7%E5%AD%A6GibsonEnv%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>前置环境：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install libglew-dev libglm-dev libassimp-dev xorg-dev libglu1-mesa-dev libboost-dev \</span><br><span class="line">mesa-common-dev freeglut3-dev libopenmpi-dev cmake golang libjpeg-turbo8-dev wmctrl \</span><br><span class="line">xdotool libzmq3-dev zlib1g-dev</span><br></pre></td></tr></table></figure>
+<h2 id="尝试python3-8"><a href="#尝试python3-8" class="headerlink" title="尝试python3.8"></a>尝试python3.8</h2><p>使用python3.8创建环境，为了后期适配ROS。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create -n gibsonenv python=3.8 anaconda</span><br><span class="line">conda activate gibsonenv</span><br></pre></td></tr></table></figure>
+<p>为了对应CUDA 11.8，采用torch 2.0.0</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118</span><br></pre></td></tr></table></figure>
+<p>安装tensorflow-gpu</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install tensorflow-gpu==2.2.0</span><br></pre></td></tr></table></figure>
+<p>克隆仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/StanfordVL/GibsonEnv.git</span><br><span class="line"><span class="built_in">cd</span> GibsonEnv</span><br><span class="line">./download.sh </span><br><span class="line">./build.sh build_local</span><br></pre></td></tr></table></figure>
+<p>首先会报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GibsonEnv/gibson/core/channels/external/glew.c:2774:1: error: unknown <span class="built_in">type</span> name ‘PFNGLCLEARDEPTHFOESPROC’; did you mean ‘PFNGLCLEARDEPTHFPROC’?</span><br><span class="line"> 2774 | PFNGLCLEARDEPTHFOESPROC __glewClearDepthfOES = NULL;</span><br><span class="line">      | ^~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">      | PFNGLCLEARDEPTHFPROC</span><br><span class="line">/home/adipandas/git_clones/GibsonEnv/gibson/core/channels/external/glew.c:2774:48: warning: initialization of ‘int’ from ‘void *’ makes <span class="built_in">integer</span> from pointer without a cast [-Wint-conversion]</span><br><span class="line"> 2774 | PFNGLCLEARDEPTHFOESPROC __glewClearDepthfOES = NULL;</span><br><span class="line">      |                                                ^~~~</span><br><span class="line">/home/adipandas/git_clones/GibsonEnv/gibson/core/channels/external/glew.c:2775:1: error: unknown <span class="built_in">type</span> name ‘PFNGLCLIPPLANEFOESPROC’; did you mean ‘PFNGLCLIPPLANEFPROC’?</span><br><span class="line"> 2775 | PFNGLCLIPPLANEFOESPROC __glewClipPlanefOES = NULL;</span><br><span class="line">      | ^~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">      | PFNGLCLIPPLANEFPROC</span><br><span class="line">/home/adipandas/git_clones/GibsonEnv/gibson/core/channels/external/glew.c:2775:46: warning: initialization of ‘int’ from ‘void *’ makes <span class="built_in">integer</span> from pointer without a cast [-Wint-conversion]</span><br><span class="line"> 2775 | PFNGLCLIPPLANEFOESPROC __glewClipPlanefOES = NULL;</span><br><span class="line">      |                                              ^~~~</span><br><span class="line">/home/adipandas/git_clones/GibsonEnv/gibson/core/channels/external/glew.c:2776:1: error: unknown <span class="built_in">type</span> name ‘PFNGLDEPTHRANGEFOESPROC’; did you mean ‘PFNGLDEPTHRANGEFPROC’?</span><br><span class="line"> 2776 | PFNGLDEPTHRANGEFOESPROC __glewDepthRangefOES = NULL;</span><br><span class="line">      | ^~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">      | PFNGLDEPTHRANGEFPROC</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>需要在<code>GibsonEnv/gibson/core/channels/external/glew.c</code>中把没有的全换成对应的，应将2774-2779行修改为：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">PFNGLCLEARDEPTHFPROC __glewClearDepthfOES = <span class="literal">NULL</span>;</span><br><span class="line">PFNGLCLIPPLANEFPROC __glewClipPlanefOES = <span class="literal">NULL</span>;</span><br><span class="line">PFNGLDEPTHRANGEFPROC __glewDepthRangefOES = <span class="literal">NULL</span>;</span><br><span class="line">PFNGLFRUSTUMFPROC __glewFrustumfOES = <span class="literal">NULL</span>;</span><br><span class="line">PFNGLGETCLIPPLANEFPROC __glewGetClipPlanefOES = <span class="literal">NULL</span>;</span><br><span class="line">PFNGLORTHOFPROC __glewOrthofOES = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<p>再次编译即可成功，随后安装python包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -e .</span><br></pre></td></tr></table></figure>
+<p>首先报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lib/python3.10/site-packages/setuptools/_distutils/dist.py:268: UserWarning: Unknown distribution option: <span class="string">&#x27;tests_require&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>需要在<code>setup.py</code>中把<code>tests_require</code>改为:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#     tests_require=[],</span></span><br><span class="line">extras_require=&#123;</span><br><span class="line">        <span class="string">&#x27;test&#x27;</span>: [<span class="string">&#x27;pytest&#x27;</span>],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>再次报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: Multiple top-level packages discovered <span class="keyword">in</span> a flat-layout:</span><br></pre></td></tr></table></figure>
+<p>在setup.py中添加：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">setup(name=<span class="string">&#x27;gibson&#x27;</span>,</span><br><span class="line">    version=<span class="string">&#x27;0.3.1&#x27;</span>,</span><br><span class="line">    py_modules=[],</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>好的，现在让我们运行<code>python examples/demo/play_husky_nonviz.py</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Segmentation fault (core dumped)</span><br></pre></td></tr></table></figure>
+<p>至此，在Ubuntu 20.04上提高python、pytorch、tensorflow、CUDA版本安装的尝试宣告失败</p>
+<h2 id="docker运行"><a href="#docker运行" class="headerlink" title="docker运行"></a>docker运行</h2><p>能用，但感觉不太好用</p>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>具身智能</tag>
+      </tags>
+  </entry>
 </search>
