@@ -722,4 +722,24 @@
         <tag>具身智能</tag>
       </tags>
   </entry>
+  <entry>
+    <title>训练DUSt3R模型</title>
+    <url>/%E8%AE%AD%E7%BB%83DUSt3R%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<p>DUSt3R的介绍可参考本博客<a href="https://blog.fengyunji.site/Dust3r/">DUSt3R模型》</a></p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>根据<a href="https://github.com/naver/dust3r">DUSt3R的github</a>的说明，安装依赖</p>
+<h2 id="下载数据集"><a href="#下载数据集" class="headerlink" title="下载数据集"></a>下载数据集</h2><p>数据集分为很多个，需要分别下载</p>
+<h3 id="CO3D数据集"><a href="#CO3D数据集" class="headerlink" title="CO3D数据集"></a>CO3D数据集</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p data/co3d_subset</span><br><span class="line"><span class="built_in">cd</span> data/co3d_subset</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/facebookresearch/co3d</span><br><span class="line"><span class="built_in">cd</span> co3d</span><br><span class="line">python3 ./co3d/download_dataset.py --download_folder ../ --single_sequence_subset</span><br><span class="line"><span class="built_in">rm</span> ../*.zip</span><br><span class="line"><span class="built_in">cd</span> ../../..</span><br><span class="line"></span><br><span class="line">python3 datasets_preprocess/preprocess_co3d.py --co3d_dir data/co3d_subset --output_dir data/co3d_subset_processed  --single_sequence_subset</span><br></pre></td></tr></table></figure>
+
+<h3 id="ARKitScenes数据集"><a href="#ARKitScenes数据集" class="headerlink" title="ARKitScenes数据集"></a>ARKitScenes数据集</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> data/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/apple/ARKitScenes.git</span><br><span class="line">python3 download_data.py raw --video_id_csv raw/raw_train_val_splits.csv --download_dir arkit_data/ --raw_dataset_assets lowres_depth vga_wide vga_wide_intrinsics lowres_wide.traj</span><br></pre></td></tr></table></figure>
+<p>主要需要提前安装<code>zip</code>和<code>unzip</code>，否则会报错</p>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>DUSt3R</tag>
+        <tag>具身智能</tag>
+        <tag>MASt3R</tag>
+      </tags>
+  </entry>
 </search>
