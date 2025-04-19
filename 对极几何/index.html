@@ -418,7 +418,7 @@
 <p>One way is to perform 2D matching and recover intrinsics as described above, then estimate the Epipolar matrix and recover the relative pose</p>
 </blockquote>
 <p>相对位姿估计的一种方法是执行2D匹配并恢复如上所述的内部函数，然后估计极线矩阵并恢复相对姿态，另一种方法是直接比较点地图。当然，DUSt3R采用的是后者。</p>
-<h2 id="对极几何"><a href="#对极几何" class="headerlink" title="对极几何"></a>对极几何</h2><p>考虑如下场景：<br><img src="/对极几何/对极几何.png"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>主要思想是：</p>
+<h2 id="对极几何"><a href="#对极几何" class="headerlink" title="对极几何"></a>对极几何</h2><p>考虑如下场景：<br><img src="/对极几何/对极几何.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>主要思想是：</p>
 <ol>
 <li>给定两张影像，获得对应的3D坐标点对。</li>
 <li>先计算基础矩阵F，</li>
