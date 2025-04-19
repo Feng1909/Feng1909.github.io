@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Ego-Planner接MPC（二）</title>
-    <url>/Ego-Planner%E6%8E%A5MPC-2/</url>
-    <content><![CDATA[<h2 id="Ego-Planner中一些注意事项"><a href="#Ego-Planner中一些注意事项" class="headerlink" title="Ego Planner中一些注意事项"></a>Ego Planner中一些注意事项</h2><ol>
-<li>规划程序设定了规划的最高高度，变量名为<code>mp_.virtual_ceil_height_</code><br> 在<code>advanced_param.xml</code>中进行配置，参数名为<br> <code>&lt;param name=&quot;grid_map/virtual_ceil_height&quot;   value=&quot;2.5&quot;/&gt;</code><br> 实现方式为：直接加一个天花板障碍物 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// add virtual ceiling to limit flight height</span></span><br><span class="line"><span class="keyword">if</span> (mp_.virtual_ceil_height_ &gt; <span class="number">-0.5</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> ceil_id = <span class="built_in">floor</span>((mp_.virtual_ceil_height_ - mp_.<span class="built_in">map_origin_</span>(<span class="number">2</span>)) * mp_.resolution_inv_);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x = md_.<span class="built_in">local_bound_min_</span>(<span class="number">0</span>); x &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">0</span>); ++x)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> y = md_.<span class="built_in">local_bound_min_</span>(<span class="number">1</span>); y &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">1</span>); ++y)</span><br><span class="line">    &#123;</span><br><span class="line">        md_.occupancy_buffer_inflate_[<span class="built_in">toAddress</span>(x, y, ceil_id)] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在通过WayPoint设定规划目标时，z轴不能小于0.1: <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">EGOReplanFSM::waypointCallback</span><span class="params">(<span class="type">const</span> nav_msgs::PathConstPtr &amp;msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (msg-&gt;poses[<span class="number">0</span>].pose.position.z &lt; <span class="number">-0.1</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Triggered!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    trigger_ = <span class="literal">true</span>;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Ego Planner状态机的切换： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">            INIT</span><br><span class="line">           /    \</span><br><span class="line">        设点    指点</span><br><span class="line">        /         \</span><br><span class="line">GEN_NEW_TRAJ &lt;-- WAIT_TARGET       EMERGENCY_STOP</span><br><span class="line">      |&lt;-------------</span><br><span class="line">      |             |</span><br><span class="line">  EXEC_TRAJ --&gt; REPLAN_TRAJ</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>无人机</category>
-      </categories>
-      <tags>
-        <tag>ROS</tag>
-        <tag>Planner</tag>
-        <tag>MPC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DUSt3R</title>
     <url>/Dust3r/</url>
     <content><![CDATA[<h2 id="DUST3r"><a href="#DUST3r" class="headerlink" title="DUST3r"></a>DUST3r</h2><p>github连接：<a href="https://github.com/naver/dust3r">DUSt3R</a><br><img src="/Dust3r/2.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>DUSt3R是一种旨在简化几何3D视觉任务的新框架。作者着重于使3D重建过程更加易于使用和高效。该框架利用深度学习和几何处理的最新进展，提高了准确性并降低了计算复杂性。 </p>
@@ -51,6 +33,24 @@
       <tags>
         <tag>GaussianSplating</tag>
         <tag>DUSt3R</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ego-Planner接MPC（二）</title>
+    <url>/Ego-Planner%E6%8E%A5MPC-2/</url>
+    <content><![CDATA[<h2 id="Ego-Planner中一些注意事项"><a href="#Ego-Planner中一些注意事项" class="headerlink" title="Ego Planner中一些注意事项"></a>Ego Planner中一些注意事项</h2><ol>
+<li>规划程序设定了规划的最高高度，变量名为<code>mp_.virtual_ceil_height_</code><br> 在<code>advanced_param.xml</code>中进行配置，参数名为<br> <code>&lt;param name=&quot;grid_map/virtual_ceil_height&quot;   value=&quot;2.5&quot;/&gt;</code><br> 实现方式为：直接加一个天花板障碍物 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// add virtual ceiling to limit flight height</span></span><br><span class="line"><span class="keyword">if</span> (mp_.virtual_ceil_height_ &gt; <span class="number">-0.5</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> ceil_id = <span class="built_in">floor</span>((mp_.virtual_ceil_height_ - mp_.<span class="built_in">map_origin_</span>(<span class="number">2</span>)) * mp_.resolution_inv_);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x = md_.<span class="built_in">local_bound_min_</span>(<span class="number">0</span>); x &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">0</span>); ++x)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> y = md_.<span class="built_in">local_bound_min_</span>(<span class="number">1</span>); y &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">1</span>); ++y)</span><br><span class="line">    &#123;</span><br><span class="line">        md_.occupancy_buffer_inflate_[<span class="built_in">toAddress</span>(x, y, ceil_id)] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在通过WayPoint设定规划目标时，z轴不能小于0.1: <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">EGOReplanFSM::waypointCallback</span><span class="params">(<span class="type">const</span> nav_msgs::PathConstPtr &amp;msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (msg-&gt;poses[<span class="number">0</span>].pose.position.z &lt; <span class="number">-0.1</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Triggered!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    trigger_ = <span class="literal">true</span>;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Ego Planner状态机的切换： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">            INIT</span><br><span class="line">           /    \</span><br><span class="line">        设点    指点</span><br><span class="line">        /         \</span><br><span class="line">GEN_NEW_TRAJ &lt;-- WAIT_TARGET       EMERGENCY_STOP</span><br><span class="line">      |&lt;-------------</span><br><span class="line">      |             |</span><br><span class="line">  EXEC_TRAJ --&gt; REPLAN_TRAJ</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>无人机</category>
+      </categories>
+      <tags>
+        <tag>ROS</tag>
+        <tag>Planner</tag>
+        <tag>MPC</tag>
       </tags>
   </entry>
   <entry>
