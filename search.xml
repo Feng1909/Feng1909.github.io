@@ -205,7 +205,7 @@
 <p>两边同除 $dt$：$\frac{\partial I}{\partial x}\frac{\Delta x}{\Delta t}+\frac{\partial I}{\partial y}\frac{\Delta y}{\Delta t}+\frac{\partial I}{\partial t}&#x3D;0$</p>
 <p>设$u, v$为速度矢量，$I_x, I_y$为灰度的方向梯度，$I_t$为灰度的时间梯度，可得：$I_xu+I_yv+I_t&#x3D;0$</p>
 <p>超定方程，无法求解。</p>
-<p>由3：在相邻像素点间存在强相关性，可得线性方程组<br>$$\left [<br>    \begin{matrix}<br>    I_x(p_1) &amp; I_y(p_1)\<br>    … &amp; … \<br>    I_x(p_N) &amp; I_y(p_N)<br>\end{matrix}<br>\right ]<br>\left [<br>    \begin{matrix}<br>    u \ v<br>    \end{matrix}<br>\right ] &#x3D; -<br>\left [<br>    \begin{matrix}<br>    I_t(p_1) \ … \ I_t(p_N)<br>    \end{matrix}<br>\right ]$$</p>
+<p>由3：在相邻像素点间存在强相关性，可得线性方程组<br>$\left [<br>    \begin{matrix}<br>    I_x(p_1) &amp; I_y(p_1)\<br>    … &amp; … \<br>    I_x(p_N) &amp; I_y(p_N)<br>\end{matrix}<br>\right ]<br>\left [<br>    \begin{matrix}<br>    u \ v<br>    \end{matrix}<br>\right ] &#x3D; -<br>\left [<br>    \begin{matrix}<br>    I_t(p_1) \ … \ I_t(p_N)<br>    \end{matrix}<br>\right ]$</p>
 <p>即：<br>$$A \cdot d &#x3D; b$$<br>$$(A^TA)d&#x3D;A^Tb$$<br>可得到Hessian矩阵$A^TA$，使用最小二乘法求解$d$，即为光流矢量。</p>
 <p>注：Hessian矩阵的特征值需要同时较大，否则最小二乘会遇到病态矩阵，此时取角点能够满足要求。</p>
 ]]></content>
