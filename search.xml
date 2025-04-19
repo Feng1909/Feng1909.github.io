@@ -129,7 +129,8 @@
 </ul>
 <h3 id="3D-Gaussian"><a href="#3D-Gaussian" class="headerlink" title="3D Gaussian"></a>3D Gaussian</h3><ul>
 <li>高斯函数(一维)：<br>$N_{\mu,\sigma}(x)&#x3D;\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-\mu)^2}{2\sigma^2})$</li>
-<li>三维高斯函数：<br>$G_s(x)&#x3D;(\frac{1}{\sqrt{2\pi}^3}\det{(\sum)})e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}(x-\mu)}$<br>其中，$x&#x3D;[a,b,c]^T$，$\mu$是椭球中心，协方差矩阵表示椭球在三轴上的伸缩和旋转，<br>$\sum&#x3D;\begin{bmatrix}\sigma_a^2&amp;Cov(a,b)&amp;Cov(a,c)\Cov(b,a)&amp;\sigma_b^2&amp;Cov(b,c)\Cov(c,a)&amp;Cov(c,b)&amp;\sigma_c^2\end{bmatrix}$<br>协方差的特征向量就是椭球对称轴。</li>
+<li>三维高斯函数：<br>$G_s(x)&#x3D;(\frac{1}{\sqrt{2\pi}^3}\det{(\sum)})e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}(x-\mu)}$<br>其中，$x&#x3D;[a,b,c]^T$，$\mu$是椭球中心，协方差矩阵表示椭球在三轴上的伸缩和旋转，  <div>$\sum=\begin{bmatrix}\sigma_a^2&Cov(a,b)&Cov(a,c)\\Cov(b,a)&\sigma_b^2&Cov(b,c)\\Cov(c,a)&Cov(c,b)&\sigma_c^2\end{bmatrix}$  </div>
+协方差的特征向量就是椭球对称轴。</li>
 </ul>
 <h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
 <li>一组静态图片</li>
