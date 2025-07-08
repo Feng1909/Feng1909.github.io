@@ -6,7 +6,7 @@
   <link href="https://blog.fengyunji.site/atom.xml" rel="self"/>
   
   <link href="https://blog.fengyunji.site/"/>
-  <updated>2025-07-01T09:01:21.321Z</updated>
+  <updated>2025-07-08T08:26:15.359Z</updated>
   <id>https://blog.fengyunji.site/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.fengyunji.site/SmartSharkVI/"/>
     <id>https://blog.fengyunji.site/SmartSharkVI/</id>
     <published>2025-07-01T08:30:19.000Z</published>
-    <updated>2025-07-01T09:01:21.321Z</updated>
+    <updated>2025-07-08T08:26:15.359Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://blog.fengyunji.site/SmartSharkIV/">《Smart Shark IV——加入车队》</a><br><a href="https://blog.fengyunji.site/SmartSharkV/">《Smart Shark V——主力队员》</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://blog.fengyunji.site/SmartSharkIV/">《Smart Shark IV——加入车队》</a><br><a href="https://blog.fengyunji.site/SmartSharkV/">《Smart Shark V——主力队员》</a></p><p>2022赛季是我作为主力队员在无人方程式车队的最后一个赛季，在这个赛季中，我们主要围绕八字绕环赛项，在弯道稳定性和速度上进行提升。同时，采用百度的Fast Deploy方案部署了最快最新的PPYOLOE_Plus模型，提升了感知的速度。</p><h2 id="力矩分配控制"><a href="#力矩分配控制" class="headerlink" title="力矩分配控制"></a>力矩分配控制</h2><p>在八字绕环中，赛车需要无限逼近横向摩擦力的极限，才能在弯道中获得更高的速度。在22赛季中，机械组和电驱动组首次在Smart Shark中采用了四电机独立驱动方式，这也使得控制算法增加了三个控制变量。对此，我们研发了力矩分配算法，在保证总驱动力不变的前提下，动态调整四个电机的输出力矩，以达到MPC状态量中期望的横摆角速度，在同样的弯道中能获得更高的过弯速度。</p><p>在实际测试中，能够达到<strong>5.5m&#x2F;s</strong>速度下的稳定绕环</p><div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">  <video width="800" height="450" controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">    <source src="八字绕环.mp4" type="video/mp4">    您的浏览器不支持视频标签。  </video>  <p style="margin-top: 8px; margin-bottom: 0; font-size: 14px; color: #666; font-style: italic; text-align: center;">    八字绕环实车效果  </p></div>]]></content>
     
     
       
