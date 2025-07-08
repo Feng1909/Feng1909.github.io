@@ -495,6 +495,17 @@ $$ \begin{aligned} \min_{\mathbf{x},\mathbf{u}} \quad &\int_{s_0}^{s_f} \frac{dt
     <content><![CDATA[<p><a href="https://blog.fengyunji.site/SmartSharkIV/">《Smart Shark IV——加入车队》</a><br><a href="https://blog.fengyunji.site/SmartSharkV/">《Smart Shark V——主力队员》</a></p>
 <p>2022赛季是我作为主力队员在无人方程式车队的最后一个赛季，在这个赛季中，我们主要围绕八字绕环赛项，在弯道稳定性和速度上进行提升。同时，采用百度的Fast Deploy方案部署了最快最新的PPYOLOE_Plus模型，提升了感知的速度。</p>
 <h2 id="力矩分配控制"><a href="#力矩分配控制" class="headerlink" title="力矩分配控制"></a>力矩分配控制</h2><p>在八字绕环中，赛车需要无限逼近横向摩擦力的极限，才能在弯道中获得更高的速度。在22赛季中，机械组和电驱动组首次在Smart Shark中采用了四电机独立驱动方式，这也使得控制算法增加了三个控制变量。对此，我们研发了力矩分配算法，在保证总驱动力不变的前提下，动态调整四个电机的输出力矩，以达到MPC状态量中期望的横摆角速度，在同样的弯道中能获得更高的过弯速度。</p>
+<p>同时，我们搭建了数值仿真软件，能够加载自定义的地图和多种车辆模型，包括四电机模型、自行车模型，以及油门-转向MPC和力矩分配MPC等控制方式。通过引入Bayes优化器，能够自动优化MPC的参数，提升车辆的稳定性和速度。</p>
+<div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
+  <video width="800" height="450" controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <source src="simulator.mp4" type="video/mp4">
+    您的浏览器不支持视频标签。
+  </video>
+  <p style="margin-top: 8px; margin-bottom: 0; font-size: 14px; color: #666; font-style: italic; text-align: center;">
+    RK4数值仿真器
+  </p>
+</div>
+
 <p>在实际测试中，能够达到<strong>5.5m&#x2F;s</strong>速度下的稳定绕环</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <video width="800" height="450" controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
@@ -504,7 +515,11 @@ $$ \begin{aligned} \min_{\mathbf{x},\mathbf{u}} \quad &\int_{s_0}^{s_f} \frac{dt
   <p style="margin-top: 8px; margin-bottom: 0; font-size: 14px; color: #666; font-style: italic; text-align: center;">
     八字绕环实车效果
   </p>
-</div>]]></content>
+</div>
+
+<p>相关成果已整理成论文投递至《Vehicle System Dynamics》</p>
+<p>在这个赛季结束后，我便不再参与车队的核心工作，在2023到现在的几年时间里，我仍在参与车队的系统设计和算法开发，但不再参与实车测试和调试工作。这一段车队的经历为我研究生阶段的深入学习打下了基础，在本科的几年里，投入了无数假期，一有时间就去车队，赛车作为一个我从小时候就开始的梦想，终于在大学阶段得以实现。</p>
+]]></content>
       <categories>
         <category>科创项目</category>
       </categories>
