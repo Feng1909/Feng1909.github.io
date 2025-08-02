@@ -883,7 +883,10 @@ $$ \begin{aligned} \min_{\mathbf{x},\mathbf{u}} \quad &\int_{s_0}^{s_f} \frac{dt
 <li>根据教程建立好映射后，网址难以记住，因此可以去阿里云上用自己的域名以CNAME方式解析一遍，这样只需要记住端口就行。</li>
 </ul>
 <h2 id="端口备份"><a href="#端口备份" class="headerlink" title="端口备份"></a>端口备份</h2><p>为了记住端口号：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. yugrp01 55973 </span><br><span class="line">   ssh yugrp01@yugrp01.fengyunji.site -p 55973</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. yugrp01 55973 </span><br><span class="line">   ssh yugrp01@yugrp01.fengyunji.site -p 55973</span><br></pre></td></tr></table></figure>
+
+<h2 id="新的免费方法："><a href="#新的免费方法：" class="headerlink" title="新的免费方法："></a>新的免费方法：</h2><p><a href="https://www.natfrp.com/">https://www.natfrp.com/</a></p>
+]]></content>
       <categories>
         <category>内网穿透</category>
       </categories>
@@ -1286,6 +1289,40 @@ $$ \begin{aligned} \min_{\mathbf{x},\mathbf{u}} \quad &\int_{s_0}^{s_f} \frac{dt
       <tags>
         <tag>MASt3R</tag>
         <tag>SLAM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NAS+tailscale点对点穿透</title>
+    <url>/NAS-tailscale%E7%82%B9%E5%AF%B9%E7%82%B9%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="NAS-Tailscale点对点穿透"><a href="#NAS-Tailscale点对点穿透" class="headerlink" title="NAS+Tailscale点对点穿透"></a>NAS+Tailscale点对点穿透</h2><p>极空间等NAS服务运营商提供官方的内网穿透服务，但在某些时候网速过慢，且有概率连接失败。因此，通过Tailscale实现点对点穿透是一个不错的选择。</p>
+<p>与Zerotier类似，Tailscale也是基于WireGuard的点对点VPN服务。它可以在不同的设备之间建立安全的连接，而无需配置复杂的网络设置。</p>
+<h2 id="Tailscale安装"><a href="#Tailscale安装" class="headerlink" title="Tailscale安装"></a>Tailscale安装</h2><p>Tailscale支持多种平台，包括Linux、macOS、Windows、iOS和Android。在极空间中，通过官方的docker应用下载并安装Tailscale，可以通过dockerproxy进行加速下载。</p>
+<p>在启动Tailscale前，需要在官网中注册，并获取一个authkey，并记住这个key，只会出现一次，注册的时候需要选中这两个选项：</p>
+<img src="2.png" alt="Tailscale Auth Key Options" width="600"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>
+
+<img src="1.png" alt="Tailscale Auth Key" width="600"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>
+
+<p>在docker启动时，设置以下路径映射：</p>
+<ul>
+<li><code>/path/to/tailscale/var/lib</code> -&gt; <code>/var/lib</code></li>
+<li><code>/path/to/tailscale/dev/net/tun</code> -&gt; <code>/dev/net/tun</code></li>
+</ul>
+<p>网络设置为<code>host</code>模式</p>
+<p>并设置以下环境变量：</p>
+<ul>
+<li><code>TS_AUTHKEY</code> -&gt; <code>your_auth_key</code></li>
+<li><code>TS_ROUTES</code> -&gt; 局域网段，如: <code>192.168.1.0/24</code></li>
+<li><code>TS_STATE_DIR</code> -&gt; <code>/var/lib/tailscale</code> # 用于设置固定ip</li>
+</ul>
+<p>运行Docker，此时可以在tailscale的Web控制台中看到新设备已连接，点击Edit route settings,勾选对应的路由，点击Save，最后点击Disable key expiry。</p>
+<p>至此，完成内网穿透的配置。</p>
+]]></content>
+      <categories>
+        <category>内网穿透</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>NAS</tag>
       </tags>
   </entry>
 </search>

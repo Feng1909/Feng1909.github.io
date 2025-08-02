@@ -6,7 +6,7 @@
   <link href="https://blog.fengyunji.site/atom.xml" rel="self"/>
   
   <link href="https://blog.fengyunji.site/"/>
-  <updated>2025-07-21T13:46:23.632Z</updated>
+  <updated>2025-08-02T08:33:48.470Z</updated>
   <id>https://blog.fengyunji.site/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NAS+tailscale点对点穿透</title>
+    <link href="https://blog.fengyunji.site/NAS-tailscale%E7%82%B9%E5%AF%B9%E7%82%B9%E7%A9%BF%E9%80%8F/"/>
+    <id>https://blog.fengyunji.site/NAS-tailscale%E7%82%B9%E5%AF%B9%E7%82%B9%E7%A9%BF%E9%80%8F/</id>
+    <published>2025-08-02T08:18:51.000Z</published>
+    <updated>2025-08-02T08:33:48.470Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="NAS-Tailscale点对点穿透"><a href="#NAS-Tailscale点对点穿透" class="headerlink" title="NAS+Tailscale点对点穿透"></a>NAS+Tailscale点对点穿透</h2><p>极空间等NAS服务运营商提供官方的内网穿透服务，但在某些时候网速过慢，且有概率连接失败。因此，通过Tailscale实现点对点穿透是一个不错的选择。</p><p>与Zerotier类似，Tailscale也是基于WireGuard的点对点VPN服务。它可以在不同的设备之间建立安全的连接，而无需配置复杂的网络设置。</p><h2 id="Tailscale安装"><a href="#Tailscale安装" class="headerlink" title="Tailscale安装"></a>Tailscale安装</h2><p>Tailscale支持多种平台，包括Linux、macOS、Windows、iOS和Android。在极空间中，通过官方的docker应用下载并安装Tailscale，可以通过dockerproxy进行加速下载。</p><p>在启动Tailscale前，需要在官网中注册，并获取一个authkey，并记住这个key，只会出现一次，注册的时候需要选中这两个选项：</p><img src="2.png" alt="Tailscale Auth Key Options" width="600"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><img src="1.png" alt="Tailscale Auth Key" width="600"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><p>在docker启动时，设置以下路径映射：</p><ul><li><code>/path/to/tailscale/var/lib</code> -&gt; <code>/var/lib</code></li><li><code>/path/to/tailscale/dev/net/tun</code> -&gt; <code>/dev/net/tun</code></li></ul><p>网络设置为<code>host</code>模式</p><p>并设置以下环境变量：</p><ul><li><code>TS_AUTHKEY</code> -&gt; <code>your_auth_key</code></li><li><code>TS_ROUTES</code> -&gt; 局域网段，如: <code>192.168.1.0/24</code></li><li><code>TS_STATE_DIR</code> -&gt; <code>/var/lib/tailscale</code> # 用于设置固定ip</li></ul><p>运行Docker，此时可以在tailscale的Web控制台中看到新设备已连接，点击Edit route settings,勾选对应的路由，点击Save，最后点击Disable key expiry。</p><p>至此，完成内网穿透的配置。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;NAS-Tailscale点对点穿透&quot;&gt;&lt;a href=&quot;#NAS-Tailscale点对点穿透&quot; class=&quot;headerlink&quot; title=&quot;NAS+Tailscale点对点穿透&quot;&gt;&lt;/a&gt;NAS+Tailscale点对点穿透&lt;/h2&gt;&lt;p&gt;极空间等NA</summary>
+      
+    
+    
+    
+    <category term="内网穿透" scheme="https://blog.fengyunji.site/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    
+    <category term="Linux" scheme="https://blog.fengyunji.site/tags/Linux/"/>
+    
+    <category term="NAS" scheme="https://blog.fengyunji.site/tags/NAS/"/>
+    
+  </entry>
   
   <entry>
     <title>MASt3R-SLAM核心流程解析</title>
@@ -495,33 +521,6 @@
     <category term="GaussianSplating" scheme="https://blog.fengyunji.site/tags/GaussianSplating/"/>
     
     <category term="COLMAP" scheme="https://blog.fengyunji.site/tags/COLMAP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FUEL探索</title>
-    <link href="https://blog.fengyunji.site/FUEL%E6%8E%A2%E7%B4%A2/"/>
-    <id>https://blog.fengyunji.site/FUEL%E6%8E%A2%E7%B4%A2/</id>
-    <published>2024-06-06T06:27:19.000Z</published>
-    <updated>2025-07-01T09:01:21.184Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="FIS结构"><a href="#FIS结构" class="headerlink" title="FIS结构"></a>FIS结构</h2><p>FUEL采用$FI_i$结构描述环境边界，包含的信息为：</p><ul><li>边界聚类 $F_i$</li><li>所有数据这个类的网格 $C_i$</li><li>$C_i$的中心位置 $p_{avg,i}$</li><li>边界框(AABB) $B_i$</li></ul><h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol><li>建立AABB框</li><li>获取传感器信息，在新感知区域建立AABB框</li><li>对比原有AABB框和新AABB框，删除不含边界的AABB框</li><li>利用剩余的AABB框(FIS)更新边界</li><li>判断AABB框对应边界大小，过大则主元分解<br><img src="/FUEL%E6%8E%A2%E7%B4%A2/fuel1.png" alt="主要步驟"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li></ol><h2 id="视点建立"><a href="#视点建立" class="headerlink" title="视点建立"></a>视点建立</h2><p>对于每个FIS，建立视点，使用一个极坐标系，中心点在$C_i$的中心位置，在极坐标系内均匀采样，得到视点集合$VP_i$。<br><img src="/FUEL%E6%8E%A2%E7%B4%A2/fuel2.png" alt="视点选择"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>对每个$VP$，根据使覆盖范围最大来确定yaw角，覆盖范围计算使根据传感器模型，与已占用的栅格不冲突的边界栅格的数量。<br>并计算两个$VP$的最短时间：<br>$$t_{lb}(x_{k_1,j_1},x_{k_2,j_1})&#x3D;\max{\frac{length(P(p_{k_1,j_1},p_{k_2,j_1}))}{v_{max}}，\frac{min(|\xi_{k_1,j_1}-\xi_{k2,j1}|,2\pi-|\xi_{k_1,j_1}-\xi_{k2,j1}|)}{\dot{\xi}_{max}}}$$<br>其中$P$是用A*算法规划的路径，前一项是位移速度限制，后一项是角速度限制。</p><h2 id="全局规划"><a href="#全局规划" class="headerlink" title="全局规划"></a>全局规划</h2><p>TSP问题，寻找开环回路，假设有$N_{cls}$个类，$M_{tsp}$代表${N_{cls}+1}$维矩阵，主要部分为${N_{cls}\times N_{cls}}$块，则TSP问题为：<br>$$M_{tsp}(k_1,k_2)&#x3D;M_{tsp}(k_2,k_1)&#x3D;t_{lb}(x_{k_1,1},x_{k_2,1}),k_1,k_2\in {1,2,…,N_{cls}}$$<br>$$M_{tsp}(0,k)&#x3D;t_{lb}(x_{0,1},x_{k,1})+\omega_c\cdot c_c(x_{k,1}),k\in {1,2,…,N_{cls}}$$<br>其中$c_c(x_{k,1})$是运动一致性成本，用来惩罚运动方向改变。<br>$$c_c(x_{k,1})&#x3D;cos^{-1}\frac{(p_{k,j}-p_0)\cdot v_0}{||p_{k,j}-p_0||\space ||v_0||}$$<br>最后，通过$M_{tsp}(k,0)&#x3D;0,k\in {1,2,…,N_{cls}}$，将开环TSP问题转化为闭环问题求解，且不会引入额外的cost。</p><h2 id="局部规划"><a href="#局部规划" class="headerlink" title="局部规划"></a>局部规划</h2><p>全局规划只是找到了访问所有聚类的最佳顺序，但是只涉及每个类都单个视点，不一定是所有视点中的最佳组合。<br>因此，在局部路径规划中，以当前位置做一个半径圆，在该圆内同时再取一些其他的视点，将这些在半径中的视点进行全连接，然后通过dijkstra算法寻找最优路径$E&#x3D;{x_{1,j_1},x_{2,j_2},…,x_{N_{rf},j_{N_{rf}}}}$。<br>$$c_{rf}(E)&#x3D;t_{lb}(x_0,x_{1,j_1})+\omega_c\cdot c_c(x_{1,j_1})+t_{lb}(x_{N_{rf}+1,1})+\sum_{k&#x3D;1}^{N_{rf}-1}t_{lb}(x_{k,j_k},x_{k+1,j_{k+1}})$$<br><img src="/FUEL%E6%8E%A2%E7%B4%A2/fuel3.png" alt="路径规划"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;FIS结构&quot;&gt;&lt;a href=&quot;#FIS结构&quot; class=&quot;headerlink&quot; title=&quot;FIS结构&quot;&gt;&lt;/a&gt;FIS结构&lt;/h2&gt;&lt;p&gt;FUEL采用$FI_i$结构描述环境边界，包含的信息为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;边界聚类 $F_i$&lt;/li&gt;
-</summary>
-      
-    
-    
-    
-    <category term="Exploration" scheme="https://blog.fengyunji.site/categories/Exploration/"/>
-    
-    
-    <category term="FUEL" scheme="https://blog.fengyunji.site/tags/FUEL/"/>
     
   </entry>
   
