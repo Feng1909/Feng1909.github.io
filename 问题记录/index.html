@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="Gaussian Splatting使用流程  最多10000张图  12mkdir -p ~&#x2F;dataset&#x2F;inputffmpeg -i test.mp4 -qscale:v 1 -qmin 1 -vf fps&#x3D;10 ~&#x2F;dataset&#x2F;input&#x2F;%04d.jpg  colmap  1python convert.py -s ~&#x2F;dataset&#x2F;  训练  1python train.py">
+<meta name="description" content="Gaussian Splatting使用流程  最多10000张图 12mkdir -p ~&#x2F;dataset&#x2F;inputffmpeg -i test.mp4 -qscale:v 1 -qmin 1 -vf fps&#x3D;10 ~&#x2F;dataset&#x2F;input&#x2F;%04d.jpg colmap 1python convert.py -s ~&#x2F;dataset&#x2F; 训练 1python train.py -s ~&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="问题记录">
 <meta property="og:url" content="https://blog.fengyunji.site/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="Gaussian Splatting使用流程  最多10000张图  12mkdir -p ~&#x2F;dataset&#x2F;inputffmpeg -i test.mp4 -qscale:v 1 -qmin 1 -vf fps&#x3D;10 ~&#x2F;dataset&#x2F;input&#x2F;%04d.jpg  colmap  1python convert.py -s ~&#x2F;dataset&#x2F;  训练  1python train.py">
+<meta property="og:description" content="Gaussian Splatting使用流程  最多10000张图 12mkdir -p ~&#x2F;dataset&#x2F;inputffmpeg -i test.mp4 -qscale:v 1 -qmin 1 -vf fps&#x3D;10 ~&#x2F;dataset&#x2F;input&#x2F;%04d.jpg colmap 1python convert.py -s ~&#x2F;dataset&#x2F; 训练 1python train.py -s ~&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-23T07:00:44.000Z">
 <meta property="article:modified_time" content="2025-11-13T13:44:39.002Z">
@@ -408,27 +408,22 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="gaussian-splatting使用流程"><a class="markdownIt-Anchor" href="#gaussian-splatting使用流程"></a> Gaussian Splatting使用流程</h2>
+    <h2 id="gaussian-splatting使用流程">Gaussian Splatting使用流程</h2>
 <ul>
-<li>最多10000张图  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/dataset/input</span><br><span class="line">ffmpeg -i test.mp4 -qscale:v 1 -qmin 1 -vf fps=10 ~/dataset/input/%04d.jpg</span><br></pre></td></tr></table></figure>
-</li>
-<li>colmap  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python convert.py -s ~/dataset/</span><br></pre></td></tr></table></figure>
-</li>
-<li>训练  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py -s ~/dataset/ --iterations 7000 --test_iterations -1</span><br></pre></td></tr></table></figure>
-</li>
-<li>可视化  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> gaussian_splatting</span><br><span class="line">./SIBR_viewers/install/bin/SIBR_gaussianViewer_app --appPath ./SIBR_viewers/install/shaders/core/ -m output/5e31c936-7/</span><br></pre></td></tr></table></figure>
-</li>
+<li>最多10000张图 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/dataset/input</span><br><span class="line">ffmpeg -i test.mp4 -qscale:v 1 -qmin 1 -vf fps=10 ~/dataset/input/%04d.jpg</span><br></pre></td></tr></table></figure></li>
+<li>colmap <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python convert.py -s ~/dataset/</span><br></pre></td></tr></table></figure></li>
+<li>训练 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py -s ~/dataset/ --iterations 7000 --test_iterations -1</span><br></pre></td></tr></table></figure></li>
+<li>可视化 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> gaussian_splatting</span><br><span class="line">./SIBR_viewers/install/bin/SIBR_gaussianViewer_app --appPath ./SIBR_viewers/install/shaders/core/ -m output/5e31c936-7/</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="编译colmap问题"><a class="markdownIt-Anchor" href="#编译colmap问题"></a> 编译colmap问题</h2>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30565883/article/details/133778529">https://blog.csdn.net/qq_30565883/article/details/133778529</a></p>
-<h2 id="gaussian-splatting使用流程-2"><a class="markdownIt-Anchor" href="#gaussian-splatting使用流程-2"></a> gaussian splatting使用流程</h2>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/688397422">https://zhuanlan.zhihu.com/p/688397422</a><br />
+<h2 id="编译colmap问题">编译colmap问题</h2>
+<p>https://blog.csdn.net/qq_30565883/article/details/133778529</p>
+<h2 id="gaussian-splatting使用流程-1">gaussian splatting使用流程</h2>
+<p>https://zhuanlan.zhihu.com/p/688397422<br />
 记得source一下embree</p>
-<h2 id="vs-code使用markdown编写导出pdf"><a class="markdownIt-Anchor" href="#vs-code使用markdown编写导出pdf"></a> vs code使用markdown编写，导出pdf</h2>
+<h2 id="vs-code使用markdown编写导出pdf">vs code使用markdown编写，导出pdf</h2>
 <ul>
 <li>安装扩展：markdown-pdf</li>
-<li>在<code>C://Users/&lt;username&gt;/.vscode/extensions/yzane.markdown-pdf-1.4.1/template/template.html</code>中最后一行添加<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt; MathJax.Hub.Config(&#123; tex2jax: &#123;inlineMath: [[&#x27;$&#x27;, &#x27;$&#x27;]]&#125;, messageStyle: &quot;none&quot; &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>在<code>C://Users/&lt;username&gt;/.vscode/extensions/yzane.markdown-pdf-1.4.1/template/template.html</code>中最后一行添加 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt; MathJax.Hub.Config(&#123; tex2jax: &#123;inlineMath: [[&#x27;$&#x27;, &#x27;$&#x27;]]&#125;, messageStyle: &quot;none&quot; &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
 <li>在markdown中右键选择<code>Markdown PDF: Export (pdf)</code>即可导出pdf</li>
 </ul>
 
@@ -490,10 +485,10 @@
                 <li>24/06/06</li>
                 <li>14:27</li>
                 
-                    <li>880</li>
+                    <li>610</li>
                 
                 
-                    <li>4</li>
+                    <li>2</li>
                 
             </ul>
         </div>
@@ -526,10 +521,10 @@
                 <li>24/05/21</li>
                 <li>15:33</li>
                 
-                    <li>1.1k</li>
+                    <li>902</li>
                 
                 
-                    <li>4</li>
+                    <li>3</li>
                 
             </ul>
         </div>
@@ -596,7 +591,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title=" Gaussian Splatting使用流程"><a rel="nofollow" class="trm-toc-link" href="#gaussian-splatting使用流程"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> Gaussian Splatting使用流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" 编译colmap问题"><a rel="nofollow" class="trm-toc-link" href="#编译colmap问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text"> 编译colmap问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" gaussian splatting使用流程"><a rel="nofollow" class="trm-toc-link" href="#gaussian-splatting使用流程-2"><span class="trm-toc-number">3.</span> <span class="trm-toc-text"> gaussian splatting使用流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" vs code使用markdown编写，导出pdf"><a rel="nofollow" class="trm-toc-link" href="#vs-code使用markdown编写导出pdf"><span class="trm-toc-number">4.</span> <span class="trm-toc-text"> vs code使用markdown编写，导出pdf</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Gaussian Splatting使用流程"><a rel="nofollow" class="trm-toc-link" href="#gaussian-splatting使用流程"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Gaussian Splatting使用流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="编译colmap问题"><a rel="nofollow" class="trm-toc-link" href="#编译colmap问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">编译colmap问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="gaussian splatting使用流程"><a rel="nofollow" class="trm-toc-link" href="#gaussian-splatting使用流程-1"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">gaussian splatting使用流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vs code使用markdown编写，导出pdf"><a rel="nofollow" class="trm-toc-link" href="#vs-code使用markdown编写导出pdf"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">vs code使用markdown编写，导出pdf</span></a></li></ol>
       </div>
     </div>
 
