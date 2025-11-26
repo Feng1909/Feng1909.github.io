@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="UWB 超宽带（Ultra Wide Band，UWB）技术是一种无线载波通信技术，它不采用正弦载波，而是利用纳秒级的非正弦波窄脉冲传输数据，因此其所占的频谱范围很宽。 UWB技术具有系统复杂度低，发射信号功率谱密度低，对信道衰落不敏感，截获能力低，定位精度高等优点，尤其适用于室内等密集多径场所的高速无线接入。 NoopLoop数据分析 使用NoopLoop公司的UWB节点，在塔克小车上采集数据，">
+<meta name="description" content="UWB 超宽带（Ultra Wide Band，UWB）技术是一种无线载波通信技术，它不采用正弦载波，而是利用纳秒级的非正弦波窄脉冲传输数据，因此其所占的频谱范围很宽。 UWB技术具有系统复杂度低，发射信号功率谱密度低，对信道衰落不敏感，截获能力低，定位精度高等优点，尤其适用于室内等密集多径场所的高速无线接入。  NoopLoop数据分析 使用NoopLoop公司的UWB节点，在塔克小车上采集数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UWB数据集分析">
 <meta property="og:url" content="https://blog.fengyunji.site/UWB%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="UWB 超宽带（Ultra Wide Band，UWB）技术是一种无线载波通信技术，它不采用正弦载波，而是利用纳秒级的非正弦波窄脉冲传输数据，因此其所占的频谱范围很宽。 UWB技术具有系统复杂度低，发射信号功率谱密度低，对信道衰落不敏感，截获能力低，定位精度高等优点，尤其适用于室内等密集多径场所的高速无线接入。 NoopLoop数据分析 使用NoopLoop公司的UWB节点，在塔克小车上采集数据，">
+<meta property="og:description" content="UWB 超宽带（Ultra Wide Band，UWB）技术是一种无线载波通信技术，它不采用正弦载波，而是利用纳秒级的非正弦波窄脉冲传输数据，因此其所占的频谱范围很宽。 UWB技术具有系统复杂度低，发射信号功率谱密度低，对信道衰落不敏感，截获能力低，定位精度高等优点，尤其适用于室内等密集多径场所的高速无线接入。  NoopLoop数据分析 使用NoopLoop公司的UWB节点，在塔克小车上采集数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-07T01:49:30.000Z">
 <meta property="article:modified_time" content="2025-11-13T13:44:38.881Z">
@@ -83,119 +83,7 @@
 <!-- Site Analytics -->
 
  
-<meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style><link rel="alternate" href="/atom.xml" title="Feng Yunji's Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Feng Yunji's Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -522,12 +410,20 @@ mjx-container[display="true"] + br {
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="uwb">UWB</h2>
+    <h2 id="uwb"><a class="markdownIt-Anchor" href="#uwb"></a> UWB</h2>
 <p>超宽带（Ultra Wide Band，UWB）技术是一种无线载波通信技术，它不采用正弦载波，而是利用纳秒级的非正弦波窄脉冲传输数据，因此其所占的频谱范围很宽。<br />
 UWB技术具有系统复杂度低，发射信号功率谱密度低，对信道衰落不敏感，截获能力低，定位精度高等优点，尤其适用于室内等密集多径场所的高速无线接入。</p>
-<h2 id="nooploop数据分析">NoopLoop数据分析</h2>
-<p>使用NoopLoop公司的UWB节点，在塔克小车上采集数据，需要将数据集中的测距信息导出。本次实验使用Faster-Lio作为小车定位。 * 录制rosbag<br />
-rosbag中使用<code>rosbag info</code>查看数据集内容： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">path:        uwb</span><br><span class="line">version:     2.0</span><br><span class="line">duration:    36.9s</span><br><span class="line">start:       Mar 30 2024 17:40:30.91 (1711791630.91)</span><br><span class="line">end:         Mar 30 2024 17:41:07.78 (1711791667.78)</span><br><span class="line">size:        254.1 MB</span><br><span class="line">messages:    18347</span><br><span class="line">compression: none [275/275 chunks]</span><br><span class="line">types:       dynamic_reconfigure/Config            [958f16a05573709014982821e6822580]</span><br><span class="line">            dynamic_reconfigure/ConfigDescription [757ce9d44ba8ddd801bb30bc456f946f]</span><br><span class="line">            geometry_msgs/Twist                   [9f195f881246fdfa2798d1d3eebca84a]</span><br><span class="line">            livox_ros_driver2/CustomMsg           [e4d6829bdfe657cb6c21a746c86b21a6]</span><br><span class="line">            nav_msgs/Odometry                     [cd5e73d190d741a2f92e81eda573aca7]</span><br><span class="line">            nlink_parser/LinktrackNodeframe2      [5e015baafc881617fa57f6ba7fd27747]</span><br><span class="line">            rosgraph_msgs/Log                     [acffd30cd6b6de30f120938c17c593fb]</span><br><span class="line">            sensor_msgs/Imu                       [6a62c6daae103f4ff57a132d6f95cec2]</span><br><span class="line">            sensor_msgs/PointCloud2               [1158d486dd51d683ce2f1be655c3c181]</span><br><span class="line">            std_msgs/Float32                      [73fcbf46b49191e672908e50842a83d4]</span><br><span class="line">            tf2_msgs/TFMessage                    [94810edda583a504dfda3829e70d7eec]</span><br><span class="line">topics:      /Odometry                                366 msgs    : nav_msgs/Odometry                    </span><br><span class="line">            /bat_vol                                1831 msgs    : std_msgs/Float32                     </span><br><span class="line">            /cloud_registered                        366 msgs    : sensor_msgs/PointCloud2              </span><br><span class="line">            /cloud_registered_body                   366 msgs    : sensor_msgs/PointCloud2              </span><br><span class="line">            /cmd_vel                                   2 msgs    : geometry_msgs/Twist                  </span><br><span class="line">            /imu                                    1832 msgs    : sensor_msgs/Imu                      </span><br><span class="line">            /livox/imu                              7334 msgs    : sensor_msgs/Imu                      </span><br><span class="line">            /livox/lidar                             367 msgs    : livox_ros_driver2/CustomMsg          </span><br><span class="line">            /nlink_linktrack_nodeframe2             1834 msgs    : nlink_parser/LinktrackNodeframe2     </span><br><span class="line">            /odom                                   1831 msgs    : nav_msgs/Odometry                    </span><br><span class="line">            /rosout                                   17 msgs    : rosgraph_msgs/Log                     (2 connections)</span><br><span class="line">            /rosout_agg                                2 msgs    : rosgraph_msgs/Log                    </span><br><span class="line">            /tarkbot_robot/parameter_descriptions      1 msg     : dynamic_reconfigure/ConfigDescription</span><br><span class="line">            /tarkbot_robot/parameter_updates           1 msg     : dynamic_reconfigure/Config           </span><br><span class="line">            /tf                                     2197 msgs    : tf2_msgs/TFMessage                    (2 connections)</span><br></pre></td></tr></table></figure> 其中，<code>/Odometry</code>是定位信息，<code>/nlink_parser/LinktrackNodeframe2</code>是测距信息。 * 编译msg文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p catkin_uwb/src</span><br><span class="line"><span class="built_in">cd</span> catkin_uwb/src</span><br><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/nooploop-dev/nlink_parser.git</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure> * 使用Python和<code>rosbag play</code>实现数据回放和接收 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> nav_msgs.msg <span class="keyword">import</span> Odometry</span><br><span class="line"><span class="keyword">from</span> nlink_parser.msg <span class="keyword">import</span> LinktrackNodeframe2</span><br><span class="line"></span><br><span class="line">rospy.init_node(<span class="string">&#x27;uwb_test&#x27;</span>)</span><br><span class="line"></span><br><span class="line">data = []</span><br><span class="line">data_single = []</span><br><span class="line">init_time = <span class="number">0.0</span></span><br><span class="line">init = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">odom_callback</span>(<span class="params">msg: Odometry</span>):</span><br><span class="line">    <span class="keyword">global</span> data_single, init, init_time</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> init:</span><br><span class="line">        init_time = msg.header.stamp.to_sec()</span><br><span class="line">    init = <span class="literal">True</span></span><br><span class="line">    <span class="comment"># print(type(msg.header.stamp.to_sec()))</span></span><br><span class="line">    data_tmp = [msg.header.stamp.to_sec() - init_time,</span><br><span class="line">                msg.pose.pose.position.x,</span><br><span class="line">                msg.pose.pose.position.y,</span><br><span class="line">                msg.pose.pose.position.z]</span><br><span class="line">    data.append([data_tmp, data_single])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">uwb_callback</span>(<span class="params">msgs</span>):</span><br><span class="line">    <span class="keyword">global</span> data_single</span><br><span class="line">    <span class="comment"># print(len(msg.nodes))</span></span><br><span class="line">    <span class="comment"># print(msg.nodes[0])</span></span><br><span class="line">    <span class="comment"># print(msg.nodes[1])</span></span><br><span class="line">    data_single = []</span><br><span class="line">    <span class="keyword">for</span> msgs <span class="keyword">in</span> msgs.nodes:</span><br><span class="line">        data_single.append(msgs.dis)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    rospy.Subscriber(<span class="string">&#x27;/Odometry&#x27;</span>, Odometry, odom_callback)</span><br><span class="line">    rospy.Subscriber(<span class="string">&#x27;/nlink_linktrack_nodeframe2&#x27;</span>, LinktrackNodeframe2, uwb_callback)</span><br><span class="line">    <span class="comment"># rospy.spin()</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line">        <span class="comment"># print(data)</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;result.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.writelines(<span class="string">&#x27;time,x,y,z,uwb1,uwb2,uwb3,uwb4\n&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> da <span class="keyword">in</span> data:</span><br><span class="line">            f.writelines(<span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">0</span>]) + <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">                        <span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">1</span>]) + <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">                        <span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">2</span>]) + <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">                        <span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">3</span>]) + <span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> sin <span class="keyword">in</span> da[<span class="number">1</span>]:</span><br><span class="line">                f.writelines(<span class="built_in">str</span>(sin) + <span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">            f.writelines(<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> 在程序目录下会出现<code>result.csv</code></p>
+<h2 id="nooploop数据分析"><a class="markdownIt-Anchor" href="#nooploop数据分析"></a> NoopLoop数据分析</h2>
+<p>使用NoopLoop公司的UWB节点，在塔克小车上采集数据，需要将数据集中的测距信息导出。本次实验使用Faster-Lio作为小车定位。</p>
+<ul>
+<li>录制rosbag<br />
+rosbag中使用<code>rosbag info</code>查看数据集内容：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">path:        uwb</span><br><span class="line">version:     2.0</span><br><span class="line">duration:    36.9s</span><br><span class="line">start:       Mar 30 2024 17:40:30.91 (1711791630.91)</span><br><span class="line">end:         Mar 30 2024 17:41:07.78 (1711791667.78)</span><br><span class="line">size:        254.1 MB</span><br><span class="line">messages:    18347</span><br><span class="line">compression: none [275/275 chunks]</span><br><span class="line">types:       dynamic_reconfigure/Config            [958f16a05573709014982821e6822580]</span><br><span class="line">            dynamic_reconfigure/ConfigDescription [757ce9d44ba8ddd801bb30bc456f946f]</span><br><span class="line">            geometry_msgs/Twist                   [9f195f881246fdfa2798d1d3eebca84a]</span><br><span class="line">            livox_ros_driver2/CustomMsg           [e4d6829bdfe657cb6c21a746c86b21a6]</span><br><span class="line">            nav_msgs/Odometry                     [cd5e73d190d741a2f92e81eda573aca7]</span><br><span class="line">            nlink_parser/LinktrackNodeframe2      [5e015baafc881617fa57f6ba7fd27747]</span><br><span class="line">            rosgraph_msgs/Log                     [acffd30cd6b6de30f120938c17c593fb]</span><br><span class="line">            sensor_msgs/Imu                       [6a62c6daae103f4ff57a132d6f95cec2]</span><br><span class="line">            sensor_msgs/PointCloud2               [1158d486dd51d683ce2f1be655c3c181]</span><br><span class="line">            std_msgs/Float32                      [73fcbf46b49191e672908e50842a83d4]</span><br><span class="line">            tf2_msgs/TFMessage                    [94810edda583a504dfda3829e70d7eec]</span><br><span class="line">topics:      /Odometry                                366 msgs    : nav_msgs/Odometry                    </span><br><span class="line">            /bat_vol                                1831 msgs    : std_msgs/Float32                     </span><br><span class="line">            /cloud_registered                        366 msgs    : sensor_msgs/PointCloud2              </span><br><span class="line">            /cloud_registered_body                   366 msgs    : sensor_msgs/PointCloud2              </span><br><span class="line">            /cmd_vel                                   2 msgs    : geometry_msgs/Twist                  </span><br><span class="line">            /imu                                    1832 msgs    : sensor_msgs/Imu                      </span><br><span class="line">            /livox/imu                              7334 msgs    : sensor_msgs/Imu                      </span><br><span class="line">            /livox/lidar                             367 msgs    : livox_ros_driver2/CustomMsg          </span><br><span class="line">            /nlink_linktrack_nodeframe2             1834 msgs    : nlink_parser/LinktrackNodeframe2     </span><br><span class="line">            /odom                                   1831 msgs    : nav_msgs/Odometry                    </span><br><span class="line">            /rosout                                   17 msgs    : rosgraph_msgs/Log                     (2 connections)</span><br><span class="line">            /rosout_agg                                2 msgs    : rosgraph_msgs/Log                    </span><br><span class="line">            /tarkbot_robot/parameter_descriptions      1 msg     : dynamic_reconfigure/ConfigDescription</span><br><span class="line">            /tarkbot_robot/parameter_updates           1 msg     : dynamic_reconfigure/Config           </span><br><span class="line">            /tf                                     2197 msgs    : tf2_msgs/TFMessage                    (2 connections)</span><br></pre></td></tr></table></figure>
+其中，<code>/Odometry</code>是定位信息，<code>/nlink_parser/LinktrackNodeframe2</code>是测距信息。</li>
+<li>编译msg文件  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p catkin_uwb/src</span><br><span class="line"><span class="built_in">cd</span> catkin_uwb/src</span><br><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/nooploop-dev/nlink_parser.git</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+</li>
+<li>使用Python和<code>rosbag play</code>实现数据回放和接收  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> nav_msgs.msg <span class="keyword">import</span> Odometry</span><br><span class="line"><span class="keyword">from</span> nlink_parser.msg <span class="keyword">import</span> LinktrackNodeframe2</span><br><span class="line"></span><br><span class="line">rospy.init_node(<span class="string">&#x27;uwb_test&#x27;</span>)</span><br><span class="line"></span><br><span class="line">data = []</span><br><span class="line">data_single = []</span><br><span class="line">init_time = <span class="number">0.0</span></span><br><span class="line">init = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">odom_callback</span>(<span class="params">msg: Odometry</span>):</span><br><span class="line">    <span class="keyword">global</span> data_single, init, init_time</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> init:</span><br><span class="line">        init_time = msg.header.stamp.to_sec()</span><br><span class="line">    init = <span class="literal">True</span></span><br><span class="line">    <span class="comment"># print(type(msg.header.stamp.to_sec()))</span></span><br><span class="line">    data_tmp = [msg.header.stamp.to_sec() - init_time,</span><br><span class="line">                msg.pose.pose.position.x,</span><br><span class="line">                msg.pose.pose.position.y,</span><br><span class="line">                msg.pose.pose.position.z]</span><br><span class="line">    data.append([data_tmp, data_single])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">uwb_callback</span>(<span class="params">msgs</span>):</span><br><span class="line">    <span class="keyword">global</span> data_single</span><br><span class="line">    <span class="comment"># print(len(msg.nodes))</span></span><br><span class="line">    <span class="comment"># print(msg.nodes[0])</span></span><br><span class="line">    <span class="comment"># print(msg.nodes[1])</span></span><br><span class="line">    data_single = []</span><br><span class="line">    <span class="keyword">for</span> msgs <span class="keyword">in</span> msgs.nodes:</span><br><span class="line">        data_single.append(msgs.dis)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    rospy.Subscriber(<span class="string">&#x27;/Odometry&#x27;</span>, Odometry, odom_callback)</span><br><span class="line">    rospy.Subscriber(<span class="string">&#x27;/nlink_linktrack_nodeframe2&#x27;</span>, LinktrackNodeframe2, uwb_callback)</span><br><span class="line">    <span class="comment"># rospy.spin()</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line">        <span class="comment"># print(data)</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;result.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.writelines(<span class="string">&#x27;time,x,y,z,uwb1,uwb2,uwb3,uwb4\n&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> da <span class="keyword">in</span> data:</span><br><span class="line">            f.writelines(<span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">0</span>]) + <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">                        <span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">1</span>]) + <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">                        <span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">2</span>]) + <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">                        <span class="built_in">str</span>(da[<span class="number">0</span>][<span class="number">3</span>]) + <span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> sin <span class="keyword">in</span> da[<span class="number">1</span>]:</span><br><span class="line">                f.writelines(<span class="built_in">str</span>(sin) + <span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">            f.writelines(<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+在程序目录下会出现<code>result.csv</code></li>
+</ul>
 
 </article>
     
@@ -623,7 +519,7 @@ rosbag中使用<code>rosbag info</code>查看数据集内容： <figure class="h
                 <li>24/04/03</li>
                 <li>15:33</li>
                 
-                    <li>197</li>
+                    <li>201</li>
                 
                 
                     <li>1</li>
@@ -693,7 +589,7 @@ rosbag中使用<code>rosbag info</code>查看数据集内容： <figure class="h
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="UWB"><a rel="nofollow" class="trm-toc-link" href="#uwb"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">UWB</span></a></li><li class="trm-toc-item trm-toc-level-2" title="NoopLoop数据分析"><a rel="nofollow" class="trm-toc-link" href="#nooploop数据分析"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">NoopLoop数据分析</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title=" UWB"><a rel="nofollow" class="trm-toc-link" href="#uwb"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> UWB</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" NoopLoop数据分析"><a rel="nofollow" class="trm-toc-link" href="#nooploop数据分析"><span class="trm-toc-number">2.</span> <span class="trm-toc-text"> NoopLoop数据分析</span></a></li></ol>
       </div>
     </div>
 

@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="DUSt3R的介绍可参考本博客DUSt3R模型》 安装依赖 根据DUSt3R的github的说明，安装依赖 下载数据集 数据集分为很多个，需要分别下载 CO3D数据集 123456789mkdir -p data&#x2F;co3d_subsetcd data&#x2F;co3d_subsetgit clone https:&#x2F;&#x2F;github.com&#x2F;facebookresearch&#x2F;co3dcd co3dpython">
+<meta name="description" content="DUSt3R的介绍可参考本博客DUSt3R模型》  安装依赖 根据DUSt3R的github的说明，安装依赖  下载数据集 数据集分为很多个，需要分别下载  CO3D数据集 123456789mkdir -p data&#x2F;co3d_subsetcd data&#x2F;co3d_subsetgit clone https:&#x2F;&#x2F;github.com&#x2F;facebookresearch&#x2F;co3dcd co3dpyt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="训练DUSt3R模型">
 <meta property="og:url" content="https://blog.fengyunji.site/%E8%AE%AD%E7%BB%83DUSt3R%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="DUSt3R的介绍可参考本博客DUSt3R模型》 安装依赖 根据DUSt3R的github的说明，安装依赖 下载数据集 数据集分为很多个，需要分别下载 CO3D数据集 123456789mkdir -p data&#x2F;co3d_subsetcd data&#x2F;co3d_subsetgit clone https:&#x2F;&#x2F;github.com&#x2F;facebookresearch&#x2F;co3dcd co3dpython">
+<meta property="og:description" content="DUSt3R的介绍可参考本博客DUSt3R模型》  安装依赖 根据DUSt3R的github的说明，安装依赖  下载数据集 数据集分为很多个，需要分别下载  CO3D数据集 123456789mkdir -p data&#x2F;co3d_subsetcd data&#x2F;co3d_subsetgit clone https:&#x2F;&#x2F;github.com&#x2F;facebookresearch&#x2F;co3dcd co3dpyt">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-08T03:28:03.000Z">
 <meta property="article:modified_time" content="2025-11-13T13:44:39.002Z">
@@ -86,119 +86,7 @@
 <!-- Site Analytics -->
 
  
-<meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style><link rel="alternate" href="/atom.xml" title="Feng Yunji's Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Feng Yunji's Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -526,13 +414,13 @@ mjx-container[display="true"] + br {
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <p>DUSt3R的介绍可参考本博客<a href="https://blog.fengyunji.site/Dust3r/">DUSt3R模型》</a></p>
-<h2 id="安装依赖">安装依赖</h2>
+<h2 id="安装依赖"><a class="markdownIt-Anchor" href="#安装依赖"></a> 安装依赖</h2>
 <p>根据<a target="_blank" rel="noopener" href="https://github.com/naver/dust3r">DUSt3R的github</a>的说明，安装依赖</p>
-<h2 id="下载数据集">下载数据集</h2>
+<h2 id="下载数据集"><a class="markdownIt-Anchor" href="#下载数据集"></a> 下载数据集</h2>
 <p>数据集分为很多个，需要分别下载</p>
-<h3 id="co3d数据集">CO3D数据集</h3>
+<h3 id="co3d数据集"><a class="markdownIt-Anchor" href="#co3d数据集"></a> CO3D数据集</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p data/co3d_subset</span><br><span class="line"><span class="built_in">cd</span> data/co3d_subset</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/facebookresearch/co3d</span><br><span class="line"><span class="built_in">cd</span> co3d</span><br><span class="line">python3 ./co3d/download_dataset.py --download_folder ../ --single_sequence_subset</span><br><span class="line"><span class="built_in">rm</span> ../*.zip</span><br><span class="line"><span class="built_in">cd</span> ../../..</span><br><span class="line"></span><br><span class="line">python3 datasets_preprocess/preprocess_co3d.py --co3d_dir data/co3d_subset --output_dir data/co3d_subset_processed  --single_sequence_subset</span><br></pre></td></tr></table></figure>
-<h3 id="arkitscenes数据集">ARKitScenes数据集</h3>
+<h3 id="arkitscenes数据集"><a class="markdownIt-Anchor" href="#arkitscenes数据集"></a> ARKitScenes数据集</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> data/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/apple/ARKitScenes.git</span><br><span class="line">python3 download_data.py raw --video_id_csv raw/raw_train_val_splits.csv --download_dir arkit_data/ --raw_dataset_assets lowres_depth vga_wide vga_wide_intrinsics lowres_wide.traj</span><br></pre></td></tr></table></figure>
 <p>主要需要提前安装<code>zip</code>和<code>unzip</code>，否则会报错</p>
 
@@ -594,7 +482,7 @@ mjx-container[display="true"] + br {
                 <li>25/04/19</li>
                 <li>11:21</li>
                 
-                    <li>472</li>
+                    <li>582</li>
                 
                 
                     <li>2</li>
@@ -700,7 +588,7 @@ mjx-container[display="true"] + br {
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="安装依赖"><a rel="nofollow" class="trm-toc-link" href="#安装依赖"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">安装依赖</span></a></li><li class="trm-toc-item trm-toc-level-2" title="下载数据集"><a rel="nofollow" class="trm-toc-link" href="#下载数据集"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">下载数据集</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="CO3D数据集"><a rel="nofollow" class="trm-toc-link" href="#co3d数据集"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">CO3D数据集</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ARKitScenes数据集"><a rel="nofollow" class="trm-toc-link" href="#arkitscenes数据集"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">ARKitScenes数据集</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title=" 安装依赖"><a rel="nofollow" class="trm-toc-link" href="#安装依赖"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> 安装依赖</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" 下载数据集"><a rel="nofollow" class="trm-toc-link" href="#下载数据集"><span class="trm-toc-number">2.</span> <span class="trm-toc-text"> 下载数据集</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title=" CO3D数据集"><a rel="nofollow" class="trm-toc-link" href="#co3d数据集"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text"> CO3D数据集</span></a></li><li class="trm-toc-item trm-toc-level-3" title=" ARKitScenes数据集"><a rel="nofollow" class="trm-toc-link" href="#arkitscenes数据集"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text"> ARKitScenes数据集</span></a></li></ol></li></ol>
       </div>
     </div>
 

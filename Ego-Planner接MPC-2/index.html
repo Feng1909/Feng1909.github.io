@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="Ego Planner中一些注意事项  规划程序设定了规划的最高高度，变量名为mp_.virtual_ceil_height_ 在advanced_param.xml中进行配置，参数名为 &lt;param name&#x3D;&quot;grid_map&#x2F;virtual_ceil_height&quot;   value&#x3D;&quot;2.5&quot;&#x2F;&gt; 实现方式为：直接加一个天花板障碍物 12345678910&#x2F;&#x2F; add virtu">
+<meta name="description" content="Ego Planner中一些注意事项  规划程序设定了规划的最高高度，变量名为mp_.virtual_ceil_height_ 在advanced_param.xml中进行配置，参数名为 &lt;param name&#x3D;&quot;grid_map&#x2F;virtual_ceil_height&quot;   value&#x3D;&quot;2.5&quot;&#x2F;&gt; 实现方式为：直接加一个天花板障碍物 12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ego-Planner接MPC（二）">
 <meta property="og:url" content="https://blog.fengyunji.site/Ego-Planner%E6%8E%A5MPC-2/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="Ego Planner中一些注意事项  规划程序设定了规划的最高高度，变量名为mp_.virtual_ceil_height_ 在advanced_param.xml中进行配置，参数名为 &lt;param name&#x3D;&quot;grid_map&#x2F;virtual_ceil_height&quot;   value&#x3D;&quot;2.5&quot;&#x2F;&gt; 实现方式为：直接加一个天花板障碍物 12345678910&#x2F;&#x2F; add virtu">
+<meta property="og:description" content="Ego Planner中一些注意事项  规划程序设定了规划的最高高度，变量名为mp_.virtual_ceil_height_ 在advanced_param.xml中进行配置，参数名为 &lt;param name&#x3D;&quot;grid_map&#x2F;virtual_ceil_height&quot;   value&#x3D;&quot;2.5&quot;&#x2F;&gt; 实现方式为：直接加一个天花板障碍物 12">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-03T07:33:14.000Z">
 <meta property="article:modified_time" content="2025-11-13T13:44:38.870Z">
@@ -84,119 +84,7 @@
 <!-- Site Analytics -->
 
  
-<meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style><link rel="alternate" href="/atom.xml" title="Feng Yunji's Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Feng Yunji's Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -523,14 +411,17 @@ mjx-container[display="true"] + br {
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="ego-planner中一些注意事项">Ego Planner中一些注意事项</h2>
-<ol type="1">
+    <h2 id="ego-planner中一些注意事项"><a class="markdownIt-Anchor" href="#ego-planner中一些注意事项"></a> Ego Planner中一些注意事项</h2>
+<ol>
 <li>规划程序设定了规划的最高高度，变量名为<code>mp_.virtual_ceil_height_</code><br />
 在<code>advanced_param.xml</code>中进行配置，参数名为<br />
-<code>&lt;param name="grid_map/virtual_ceil_height"   value="2.5"/&gt;</code><br />
-实现方式为：直接加一个天花板障碍物 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// add virtual ceiling to limit flight height</span></span><br><span class="line"><span class="keyword">if</span> (mp_.virtual_ceil_height_ &gt; <span class="number">-0.5</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> ceil_id = <span class="built_in">floor</span>((mp_.virtual_ceil_height_ - mp_.<span class="built_in">map_origin_</span>(<span class="number">2</span>)) * mp_.resolution_inv_);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x = md_.<span class="built_in">local_bound_min_</span>(<span class="number">0</span>); x &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">0</span>); ++x)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> y = md_.<span class="built_in">local_bound_min_</span>(<span class="number">1</span>); y &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">1</span>); ++y)</span><br><span class="line">    &#123;</span><br><span class="line">        md_.occupancy_buffer_inflate_[<span class="built_in">toAddress</span>(x, y, ceil_id)] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在通过WayPoint设定规划目标时，z轴不能小于0.1: <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">EGOReplanFSM::waypointCallback</span><span class="params">(<span class="type">const</span> nav_msgs::PathConstPtr &amp;msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (msg-&gt;poses[<span class="number">0</span>].pose.position.z &lt; <span class="number">-0.1</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Triggered!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    trigger_ = <span class="literal">true</span>;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Ego Planner状态机的切换： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">            INIT</span><br><span class="line">           /    \</span><br><span class="line">        设点    指点</span><br><span class="line">        /         \</span><br><span class="line">GEN_NEW_TRAJ &lt;-- WAIT_TARGET       EMERGENCY_STOP</span><br><span class="line">      |&lt;-------------</span><br><span class="line">      |             |</span><br><span class="line">  EXEC_TRAJ --&gt; REPLAN_TRAJ</span><br></pre></td></tr></table></figure></li>
+<code>&lt;param name=&quot;grid_map/virtual_ceil_height&quot;   value=&quot;2.5&quot;/&gt;</code><br />
+实现方式为：直接加一个天花板障碍物 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// add virtual ceiling to limit flight height</span></span><br><span class="line"><span class="keyword">if</span> (mp_.virtual_ceil_height_ &gt; <span class="number">-0.5</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> ceil_id = <span class="built_in">floor</span>((mp_.virtual_ceil_height_ - mp_.<span class="built_in">map_origin_</span>(<span class="number">2</span>)) * mp_.resolution_inv_);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x = md_.<span class="built_in">local_bound_min_</span>(<span class="number">0</span>); x &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">0</span>); ++x)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> y = md_.<span class="built_in">local_bound_min_</span>(<span class="number">1</span>); y &lt;= md_.<span class="built_in">local_bound_max_</span>(<span class="number">1</span>); ++y)</span><br><span class="line">    &#123;</span><br><span class="line">        md_.occupancy_buffer_inflate_[<span class="built_in">toAddress</span>(x, y, ceil_id)] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>在通过WayPoint设定规划目标时，z轴不能小于0.1: <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">EGOReplanFSM::waypointCallback</span><span class="params">(<span class="type">const</span> nav_msgs::PathConstPtr &amp;msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (msg-&gt;poses[<span class="number">0</span>].pose.position.z &lt; <span class="number">-0.1</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Triggered!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    trigger_ = <span class="literal">true</span>;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Ego Planner状态机的切换： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">            INIT</span><br><span class="line">           /    \</span><br><span class="line">        设点    指点</span><br><span class="line">        /         \</span><br><span class="line">GEN_NEW_TRAJ &lt;-- WAIT_TARGET       EMERGENCY_STOP</span><br><span class="line">      |&lt;-------------</span><br><span class="line">      |             |</span><br><span class="line">  EXEC_TRAJ --&gt; REPLAN_TRAJ</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
 </article>
@@ -627,7 +518,7 @@ mjx-container[display="true"] + br {
                 <li>24/04/02</li>
                 <li>16:10</li>
                 
-                    <li>559</li>
+                    <li>555</li>
                 
                 
                     <li>2</li>
@@ -697,7 +588,7 @@ mjx-container[display="true"] + br {
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Ego Planner中一些注意事项"><a rel="nofollow" class="trm-toc-link" href="#ego-planner中一些注意事项"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Ego Planner中一些注意事项</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title=" Ego Planner中一些注意事项"><a rel="nofollow" class="trm-toc-link" href="#ego-planner中一些注意事项"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> Ego Planner中一些注意事项</span></a></li></ol>
       </div>
     </div>
 
