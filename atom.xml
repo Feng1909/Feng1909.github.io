@@ -6,7 +6,7 @@
   <link href="https://blog.fengyunji.site/atom.xml" rel="self"/>
   
   <link href="https://blog.fengyunji.site/"/>
-  <updated>2025-11-26T03:03:25.025Z</updated>
+  <updated>2025-11-26T03:03:55.770Z</updated>
   <id>https://blog.fengyunji.site/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.fengyunji.site/DROID-SLAM/"/>
     <id>https://blog.fengyunji.site/DROID-SLAM/</id>
     <published>2025-11-26T02:33:59.000Z</published>
-    <updated>2025-11-26T03:03:25.025Z</updated>
+    <updated>2025-11-26T03:03:55.770Z</updated>
     
-    <content type="html"><![CDATA[<p>[toc]</p><h1 id="简介">简介</h1><p>DROID-SLAM 是一种基于深度学习的实时单目 SLAM（Simultaneous Localization and Mapping）系统。它结合了传统 SLAM 方法和深度神经网络的优势，能够在动态环境中实现高精度的相机定位和三维地图构建。相比于后来的MASt3R-SLAM，它能够保证全局一致性，本文重点关注后端优化部分。</p><h1 id="高斯牛顿法">高斯牛顿法</h1><p><br><span class="math display">arg min<sub><em>x</em></sub><em>f</em>(<em>x</em>)</span><br> <br><span class="math display"><em>f</em>(<em>x</em>)</span><br></p>]]></content>
+    <content type="html"><![CDATA[<p>[toc]</p><h1 id="简介">简介</h1><p>DROID-SLAM 是一种基于深度学习的实时单目 SLAM（Simultaneous Localization and Mapping）系统。它结合了传统 SLAM 方法和深度神经网络的优势，能够在动态环境中实现高精度的相机定位和三维地图构建。相比于后来的MASt3R-SLAM，它能够保证全局一致性，本文重点关注后端优化部分。</p><h1 id="高斯牛顿法">高斯牛顿法</h1><p><br><span class="math display">arg min<sub><em>x</em></sub><em>f</em>(<em>x</em>)</span><br></p><p><br><span class="math display"><em>f</em>(<em>x</em>)</span><br></p>]]></content>
     
     
       
