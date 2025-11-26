@@ -7,7 +7,7 @@
 <h1 id="简介">简介</h1>
 <p>DROID-SLAM 是一种基于深度学习的实时单目 SLAM（Simultaneous Localization and Mapping）系统。它结合了传统 SLAM 方法和深度神经网络的优势，能够在动态环境中实现高精度的相机定位和三维地图构建。相比于后来的MASt3R-SLAM，它能够保证全局一致性，本文重点关注后端优化部分。</p>
 <h1 id="高斯牛顿法">高斯牛顿法</h1>
-<p>$$  $$</p>
+<p><br /><span class="math display">arg min<sub><em>x</em></sub><em>f</em>(<em>x</em>)<em>f</em>(<em>x</em>)</span><br /></p>
 ]]></content>
       <categories>
         <category>三维重建</category>
