@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="内网穿透内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。比如在实验室中，服务器连接路由器，因此服务器的ip地址实际为路由器下的局域网地址，也就是内网，这个地址从路由器下以外的设备是无法访问的，因此需要使用内网穿透，让ssh能够从外网连接。 花生壳内网穿透其他的或多或少都要花钱或者租云服务器花生壳可以有">
+<meta name="description" content="内网穿透 内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。比如在实验室中，服务器连接路由器，因此服务器的ip地址实际为路由器下的局域网地址，也就是内网，这个地址从路由器下以外的设备是无法访问的，因此需要使用内网穿透，让ssh能够从外网连接。  花生壳内网穿透 其他的或多或少都要花钱或者租云服务器 花">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内网穿透ssh外网连接">
 <meta property="og:url" content="https://blog.fengyunji.site/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8Fssh%E5%A4%96%E7%BD%91%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="内网穿透内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。比如在实验室中，服务器连接路由器，因此服务器的ip地址实际为路由器下的局域网地址，也就是内网，这个地址从路由器下以外的设备是无法访问的，因此需要使用内网穿透，让ssh能够从外网连接。 花生壳内网穿透其他的或多或少都要花钱或者租云服务器花生壳可以有">
+<meta property="og:description" content="内网穿透 内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。比如在实验室中，服务器连接路由器，因此服务器的ip地址实际为路由器下的局域网地址，也就是内网，这个地址从路由器下以外的设备是无法访问的，因此需要使用内网穿透，让ssh能够从外网连接。  花生壳内网穿透 其他的或多或少都要花钱或者租云服务器 花">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-08T08:18:34.000Z">
 <meta property="article:modified_time" content="2025-11-13T13:44:38.881Z">
@@ -410,13 +410,17 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><p>内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。比如在实验室中，服务器连接路由器，因此服务器的ip地址实际为路由器下的局域网地址，也就是内网，这个地址从路由器下以外的设备是无法访问的，因此需要使用内网穿透，让ssh能够从外网连接。</p>
-<h2 id="花生壳内网穿透"><a href="#花生壳内网穿透" class="headerlink" title="花生壳内网穿透"></a>花生壳内网穿透</h2><p><strong>其他的或多或少都要花钱或者租云服务器</strong><br>花生壳可以有两条免费的内网穿透映射，还可以建立子账号获得更多的映射。  </p>
+    <h2 id="内网穿透"><a class="markdownIt-Anchor" href="#内网穿透"></a> 内网穿透</h2>
+<p>内网穿透，也即 NAT 穿透，进行 NAT 穿透是为了使具有某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。比如在实验室中，服务器连接路由器，因此服务器的ip地址实际为路由器下的局域网地址，也就是内网，这个地址从路由器下以外的设备是无法访问的，因此需要使用内网穿透，让ssh能够从外网连接。</p>
+<h2 id="花生壳内网穿透"><a class="markdownIt-Anchor" href="#花生壳内网穿透"></a> 花生壳内网穿透</h2>
+<p><strong>其他的或多或少都要花钱或者租云服务器</strong><br />
+花生壳可以有两条免费的内网穿透映射，还可以建立子账号获得更多的映射。</p>
 <ul>
 <li>进入<a target="_blank" rel="noopener" href="https://hsk.oray.com/">官网</a>，根据<a target="_blank" rel="noopener" href="https://service.oray.com/question/11630.html">使用帮助</a>安装好，特别要注意安装好后不要立即关闭终端，需要使用终端里的SN码绑定账户</li>
 <li>根据教程建立好映射后，网址难以记住，因此可以去阿里云上用自己的域名以CNAME方式解析一遍，这样只需要记住端口就行。</li>
 </ul>
-<h2 id="端口备份"><a href="#端口备份" class="headerlink" title="端口备份"></a>端口备份</h2><p>为了记住端口号：</p>
+<h2 id="端口备份"><a class="markdownIt-Anchor" href="#端口备份"></a> 端口备份</h2>
+<p>为了记住端口号：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. yugrp01 55973 </span><br><span class="line">   ssh yugrp01@yugrp01.fengyunji.site -p 55973</span><br></pre></td></tr></table></figure>
 </article>
     
@@ -476,7 +480,7 @@
                 <li>24/04/19</li>
                 <li>16:04</li>
                 
-                    <li>522</li>
+                    <li>523</li>
                 
                 
                     <li>1</li>
@@ -512,7 +516,7 @@
                 <li>24/04/07</li>
                 <li>09:49</li>
                 
-                    <li>594</li>
+                    <li>595</li>
                 
                 
                     <li>3</li>
@@ -582,7 +586,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="内网穿透"><a rel="nofollow" class="trm-toc-link" href="#内网穿透"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">内网穿透</span></a></li><li class="trm-toc-item trm-toc-level-2" title="花生壳内网穿透"><a rel="nofollow" class="trm-toc-link" href="#花生壳内网穿透"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">花生壳内网穿透</span></a></li><li class="trm-toc-item trm-toc-level-2" title="端口备份"><a rel="nofollow" class="trm-toc-link" href="#端口备份"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">端口备份</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title=" 内网穿透"><a rel="nofollow" class="trm-toc-link" href="#内网穿透"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> 内网穿透</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" 花生壳内网穿透"><a rel="nofollow" class="trm-toc-link" href="#花生壳内网穿透"><span class="trm-toc-number">2.</span> <span class="trm-toc-text"> 花生壳内网穿透</span></a></li><li class="trm-toc-item trm-toc-level-2" title=" 端口备份"><a rel="nofollow" class="trm-toc-link" href="#端口备份"><span class="trm-toc-number">3.</span> <span class="trm-toc-text"> 端口备份</span></a></li></ol>
       </div>
     </div>
 

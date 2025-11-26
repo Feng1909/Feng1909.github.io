@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="在项目中使用子模块添加子模块1git submodule add +仓库地址 +本地路径 比如： 1git submodule add https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.git .&#x2F;submodule&#x2F;xxx 如果提示该仓库已经存在，应清除该仓库的缓存： 1git rm --cached .&#x2F;submodule&#x2F;xxx 克隆项目1git clone --recurse-subm">
+<meta name="description" content="在项目中使用子模块  添加子模块 1git submodule add +仓库地址 +本地路径 比如： 1git submodule add https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.git .&#x2F;submodule&#x2F;xxx 如果提示该仓库已经存在，应清除该仓库的缓存： 1git rm --cached .&#x2F;submodule&#x2F;xxx  克隆项目 1git clone --recurs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git submodule使用">
 <meta property="og:url" content="https://blog.fengyunji.site/submodule/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="在项目中使用子模块添加子模块1git submodule add +仓库地址 +本地路径 比如： 1git submodule add https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.git .&#x2F;submodule&#x2F;xxx 如果提示该仓库已经存在，应清除该仓库的缓存： 1git rm --cached .&#x2F;submodule&#x2F;xxx 克隆项目1git clone --recurse-subm">
+<meta property="og:description" content="在项目中使用子模块  添加子模块 1git submodule add +仓库地址 +本地路径 比如： 1git submodule add https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.git .&#x2F;submodule&#x2F;xxx 如果提示该仓库已经存在，应清除该仓库的缓存： 1git rm --cached .&#x2F;submodule&#x2F;xxx  克隆项目 1git clone --recurs">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-23T08:02:27.000Z">
 <meta property="article:modified_time" content="2025-11-13T13:44:38.881Z">
@@ -409,13 +409,17 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="在项目中使用子模块"><a href="#在项目中使用子模块" class="headerlink" title="在项目中使用子模块"></a>在项目中使用子模块</h2><h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add +仓库地址 +本地路径</span><br></pre></td></tr></table></figure>
+    <h2 id="在项目中使用子模块"><a class="markdownIt-Anchor" href="#在项目中使用子模块"></a> 在项目中使用子模块</h2>
+<h3 id="添加子模块"><a class="markdownIt-Anchor" href="#添加子模块"></a> 添加子模块</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add +仓库地址 +本地路径</span><br></pre></td></tr></table></figure>
 <p>比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/xxx/xxx.git ./submodule/xxx</span><br></pre></td></tr></table></figure>
 <p>如果提示该仓库已经存在，应清除该仓库的缓存：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached ./submodule/xxx</span><br></pre></td></tr></table></figure>
-<h3 id="克隆项目"><a href="#克隆项目" class="headerlink" title="克隆项目"></a>克隆项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recurse-submodules +仓库地址</span><br></pre></td></tr></table></figure>
-<h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+<h3 id="克隆项目"><a class="markdownIt-Anchor" href="#克隆项目"></a> 克隆项目</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recurse-submodules +仓库地址</span><br></pre></td></tr></table></figure>
+<h3 id="更新子模块"><a class="markdownIt-Anchor" href="#更新子模块"></a> 更新子模块</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
 <p>其中<code>--init</code>表示初始化子模块，<code>--recursive</code>表示递归更新子模块。</p>
 
 </article>
@@ -476,7 +480,7 @@
                 <li>25/02/25</li>
                 <li>16:16</li>
                 
-                    <li>535</li>
+                    <li>536</li>
                 
                 
                     <li>2</li>
@@ -512,10 +516,10 @@
                 <li>24/11/08</li>
                 <li>14:53</li>
                 
-                    <li>438</li>
+                    <li>522</li>
                 
                 
-                    <li>1</li>
+                    <li>2</li>
                 
             </ul>
         </div>
@@ -582,7 +586,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="在项目中使用子模块"><a rel="nofollow" class="trm-toc-link" href="#在项目中使用子模块"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">在项目中使用子模块</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="添加子模块"><a rel="nofollow" class="trm-toc-link" href="#添加子模块"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">添加子模块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="克隆项目"><a rel="nofollow" class="trm-toc-link" href="#克隆项目"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">克隆项目</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新子模块"><a rel="nofollow" class="trm-toc-link" href="#更新子模块"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">更新子模块</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title=" 在项目中使用子模块"><a rel="nofollow" class="trm-toc-link" href="#在项目中使用子模块"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> 在项目中使用子模块</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title=" 添加子模块"><a rel="nofollow" class="trm-toc-link" href="#添加子模块"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text"> 添加子模块</span></a></li><li class="trm-toc-item trm-toc-level-3" title=" 克隆项目"><a rel="nofollow" class="trm-toc-link" href="#克隆项目"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text"> 克隆项目</span></a></li><li class="trm-toc-item trm-toc-level-3" title=" 更新子模块"><a rel="nofollow" class="trm-toc-link" href="#更新子模块"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text"> 更新子模块</span></a></li></ol></li></ol>
       </div>
     </div>
 

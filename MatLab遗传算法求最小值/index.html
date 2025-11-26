@@ -7,12 +7,12 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="题目 先上代码12345678910111213141516%%%%%%%%%%%%%%%%%  test.m   %%%%  Feng1909 %%%%%%%%%%%%%%%%%function result &#x3D; test(a)	is_max &#x3D; 0;    x &#x3D; a(1);    y &#x3D; a(2);    PI &#x3D; 3.141592653;    if is_max &#x3D;&#x3D; 0    	res">
+<meta name="description" content="题目   先上代码 12345678910111213141516%%%%%%%%%%%%%%%%%  test.m   %%%%  Feng1909 %%%%%%%%%%%%%%%%%function result &#x3D; test(a)	is_max &#x3D; 0;    x &#x3D; a(1);    y &#x3D; a(2);    PI &#x3D; 3.141592653;    if is_max &#x3D;&#x3D; 0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MatLab遗传算法求最小值">
 <meta property="og:url" content="https://blog.fengyunji.site/MatLab%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E5%80%BC/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
-<meta property="og:description" content="题目 先上代码12345678910111213141516%%%%%%%%%%%%%%%%%  test.m   %%%%  Feng1909 %%%%%%%%%%%%%%%%%function result &#x3D; test(a)	is_max &#x3D; 0;    x &#x3D; a(1);    y &#x3D; a(2);    PI &#x3D; 3.141592653;    if is_max &#x3D;&#x3D; 0    	res">
+<meta property="og:description" content="题目   先上代码 12345678910111213141516%%%%%%%%%%%%%%%%%  test.m   %%%%  Feng1909 %%%%%%%%%%%%%%%%%function result &#x3D; test(a)	is_max &#x3D; 0;    x &#x3D; a(1);    y &#x3D; a(2);    PI &#x3D; 3.141592653;    if is_max &#x3D;&#x3D; 0">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.fengyunji.site/img/404.jpg">
 <meta property="og:image" content="https://blog.fengyunji.site/img/404.jpg">
@@ -413,12 +413,18 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/img/MatLab%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E5%80%BC/1.jpeg" alt="在这里插入图片描述"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<h2 id="先上代码"><a href="#先上代码" class="headerlink" title="先上代码"></a>先上代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%%%%%%%%%%%%%%%</span><br><span class="line">%%  test.m   %%</span><br><span class="line">%%  Feng1909 %%</span><br><span class="line">%%%%%%%%%%%%%%%</span><br><span class="line">function result = test(a)</span><br><span class="line">	is_max = <span class="number">0</span>;</span><br><span class="line">    x = a(<span class="number">1</span>);</span><br><span class="line">    y = a(<span class="number">2</span>);</span><br><span class="line">    PI = <span class="number">3.141592653</span>;</span><br><span class="line">    <span class="keyword">if</span> is_max == <span class="number">0</span></span><br><span class="line">    	result = -(sin(<span class="number">3</span>*PI*x)*cos(<span class="number">4</span>*PI*y)+cos(<span class="number">5</span>*PI*x*sin(<span class="number">2</span>*PI*y)))*(<span class="number">1</span>);</span><br><span class="line">    end</span><br><span class="line">    <span class="keyword">if</span> is_max == <span class="number">1</span></span><br><span class="line">    	result = (sin(<span class="number">3</span>*PI*x)*cos(<span class="number">4</span>*PI*y)+cos(<span class="number">5</span>*PI*x*sin(<span class="number">2</span>*PI*y)))*(<span class="number">1</span>);</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<h3 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h3><p>定义函数名为<code>test</code>，传入变量为向量<code>a</code>，该向量是一个二维向量，在函数中分别令<code>x</code>和<code>y</code>取<code>a</code>向量的两个值作为待优化函数的输入，当计算函数最大值时，将<code>is_max</code>变量赋值为1，否则为0，通过函数计算返回函数值</p>
-<h3 id="GA工具箱"><a href="#GA工具箱" class="headerlink" title="GA工具箱"></a>GA工具箱</h3><p>打开Matlab中的GA工具箱，设置如下：<img src="/2.png" alt="在这里插入图片描述"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>然后点击<code>Start</code>按钮开始优化</p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><strong>min:</strong> -1.9999999999719975	x &#x3D; 0.16666739259256413	y &#x3D; -0.5000001466254731 </p>
-<p><strong>max:</strong> -1.9638487135569358	x&#x3D; 0.19121141960284982	y &#x3D; 1.2499963437299235</p>
+    <h1 id="题目"><a class="markdownIt-Anchor" href="#题目"></a> 题目</h1>
+<p><img src="/img/MatLab%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E5%80%BC/1.jpeg" alt="在这里插入图片描述"   data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/></p>
+<h2 id="先上代码"><a class="markdownIt-Anchor" href="#先上代码"></a> 先上代码</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%%%%%%%%%%%%%%%</span><br><span class="line">%%  test.m   %%</span><br><span class="line">%%  Feng1909 %%</span><br><span class="line">%%%%%%%%%%%%%%%</span><br><span class="line">function result = test(a)</span><br><span class="line">	is_max = <span class="number">0</span>;</span><br><span class="line">    x = a(<span class="number">1</span>);</span><br><span class="line">    y = a(<span class="number">2</span>);</span><br><span class="line">    PI = <span class="number">3.141592653</span>;</span><br><span class="line">    <span class="keyword">if</span> is_max == <span class="number">0</span></span><br><span class="line">    	result = -(sin(<span class="number">3</span>*PI*x)*cos(<span class="number">4</span>*PI*y)+cos(<span class="number">5</span>*PI*x*sin(<span class="number">2</span>*PI*y)))*(<span class="number">1</span>);</span><br><span class="line">    end</span><br><span class="line">    <span class="keyword">if</span> is_max == <span class="number">1</span></span><br><span class="line">    	result = (sin(<span class="number">3</span>*PI*x)*cos(<span class="number">4</span>*PI*y)+cos(<span class="number">5</span>*PI*x*sin(<span class="number">2</span>*PI*y)))*(<span class="number">1</span>);</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="代码解释"><a class="markdownIt-Anchor" href="#代码解释"></a> 代码解释</h3>
+<p>定义函数名为<code>test</code>，传入变量为向量<code>a</code>，该向量是一个二维向量，在函数中分别令<code>x</code>和<code>y</code>取<code>a</code>向量的两个值作为待优化函数的输入，当计算函数最大值时，将<code>is_max</code>变量赋值为1，否则为0，通过函数计算返回函数值</p>
+<h3 id="ga工具箱"><a class="markdownIt-Anchor" href="#ga工具箱"></a> GA工具箱</h3>
+<p>打开Matlab中的GA工具箱，设置如下：<img src="2.png" alt="在这里插入图片描述"   data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/><br />
+然后点击<code>Start</code>按钮开始优化</p>
+<h3 id="结果"><a class="markdownIt-Anchor" href="#结果"></a> 结果</h3>
+<p><strong>min:</strong> -1.9999999999719975	x = 0.16666739259256413	y = -0.5000001466254731</p>
+<p><strong>max:</strong> -1.9638487135569358	x= 0.19121141960284982	y = 1.2499963437299235</p>
 
 </article>
     
@@ -517,7 +523,7 @@
                     <li>1.8k</li>
                 
                 
-                    <li>9</li>
+                    <li>10</li>
                 
             </ul>
         </div>
@@ -584,7 +590,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="题目"><a rel="nofollow" class="trm-toc-link" href="#题目"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">题目</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="先上代码"><a rel="nofollow" class="trm-toc-link" href="#先上代码"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">先上代码</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="代码解释"><a rel="nofollow" class="trm-toc-link" href="#代码解释"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">代码解释</span></a></li><li class="trm-toc-item trm-toc-level-3" title="GA工具箱"><a rel="nofollow" class="trm-toc-link" href="#GA工具箱"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">GA工具箱</span></a></li><li class="trm-toc-item trm-toc-level-3" title="结果"><a rel="nofollow" class="trm-toc-link" href="#结果"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text">结果</span></a></li></ol></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title=" 题目"><a rel="nofollow" class="trm-toc-link" href="#题目"><span class="trm-toc-number">1.</span> <span class="trm-toc-text"> 题目</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title=" 先上代码"><a rel="nofollow" class="trm-toc-link" href="#先上代码"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text"> 先上代码</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title=" 代码解释"><a rel="nofollow" class="trm-toc-link" href="#代码解释"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text"> 代码解释</span></a></li><li class="trm-toc-item trm-toc-level-3" title=" GA工具箱"><a rel="nofollow" class="trm-toc-link" href="#ga工具箱"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text"> GA工具箱</span></a></li><li class="trm-toc-item trm-toc-level-3" title=" 结果"><a rel="nofollow" class="trm-toc-link" href="#结果"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text"> 结果</span></a></li></ol></li></ol></li></ol>
       </div>
     </div>
 
