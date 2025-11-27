@@ -169,12 +169,10 @@ f_x\frac{d_i}{z_j} & 0 & -f_x\frac{x_j d_i}{z_j^2} & -f_x\frac{x_j y_j}{z_j^2} &
 </ol>
 <h3 id="深度参数化"><a href="#深度参数化" class="headerlink" title="深度参数化"></a>深度参数化</h3><p>投影对深度的导数：</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-\frac{\partial \hat{u}}{\partial d_i}&=\frac{\partial}{\partial d_i}(f_x\frac{x_j}{z_j}+c_x) \\
-&=f_x(\frac{1}{z_j}\frac{\partial x_j}{\partial d_i}-\frac{x_j}{z_j^2}\frac{\partial z_j}{\partial d_i}) \\
-&=f_x(\frac{t_x}{z_j}-\frac{x_j t_z}{z_j^2})\\
-\frac{\partial \hat{v}}{\partial d_i}&=f_y(\frac{t_y}{z_j}-\frac{y_j t_z}{z_j^2})
-\end{aligned}</script><p>残差带负号。</p>
+\frac{\partial \hat{u}}{\partial d_i}=\frac{\partial}{\partial d_i}(f_x\frac{x_j}{z_j}+c_x) \\
+=f_x(\frac{1}{z_j}\frac{\partial x_j}{\partial d_i}-\frac{x_j}{z_j^2}\frac{\partial z_j}{\partial d_i}) \\
+=f_x(\frac{t_x}{z_j}-\frac{x_j t_z}{z_j^2})\\
+\frac{\partial \hat{v}}{\partial d_i}=f_y(\frac{t_y}{z_j}-\frac{y_j t_z}{z_j^2})</script><p>残差带负号。</p>
 <p>计算流程为：<br><img src="1.png" alt="DROID-SLAM-backend"   data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/></p>
 <h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><p>线性化后的正规方程：</p>
 <script type="math/tex; mode=display">
@@ -182,10 +180,8 @@ f_x\frac{d_i}{z_j} & 0 & -f_x\frac{x_j d_i}{z_j^2} & -f_x\frac{x_j y_j}{z_j^2} &
 \begin{bmatrix}\Delta x \\ \Delta d \end{bmatrix} =
 \begin{bmatrix}b_x \\ b_d \end{bmatrix}</script><p>通过Schur补消元法，消去深度变量$\Delta d$：</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-S&=H_{xx}-H_{xd}H_{dd}^{-1}H_{dx} \\
-v&=b_x - H_{xd}H_{dd}^{-1}b_d
-\end{aligned}</script><p>得到简化后的方程：</p>
+S=H_{xx}-H_{xd}H_{dd}^{-1}H_{dx} \\
+v=b_x - H_{xd}H_{dd}^{-1}b_d</script><p>得到简化后的方程：</p>
 <script type="math/tex; mode=display">
 S\Delta x = v</script><p>通过共轭梯度法求解$\Delta x$，然后回代求解$\Delta d$：</p>
 <script type="math/tex; mode=display">
