@@ -7,16 +7,22 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Feng Yunji&#39;s Blog">
-<meta property="og:url" content="https://blog.fengyunji.site/archives/index.html">
+<meta name="description" content="简介MASt3R-SLAM 是一种基于深度学习的实时单目 SLAM（Simultaneous Localization and Mapping）系统。它结合了传统 SLAM 方法和深度神经网络的优势，能够在环境中实现高精度的相机定位和三维地图构建。相比于先前的DROID-SLAM，进一步提升了优化的效率和精度，本文重点关注前端优化部分。 位姿优化MASt3R-SLAM的位姿优化函数为gauss_n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MASt3R-SLAM">
+<meta property="og:url" content="https://blog.fengyunji.site/MASt3R-SLAM/index.html">
 <meta property="og:site_name" content="Feng Yunji&#39;s Blog">
+<meta property="og:description" content="简介MASt3R-SLAM 是一种基于深度学习的实时单目 SLAM（Simultaneous Localization and Mapping）系统。它结合了传统 SLAM 方法和深度神经网络的优势，能够在环境中实现高精度的相机定位和三维地图构建。相比于先前的DROID-SLAM，进一步提升了优化的效率和精度，本文重点关注前端优化部分。 位姿优化MASt3R-SLAM的位姿优化函数为gauss_n">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-28T08:12:13.000Z">
+<meta property="article:modified_time" content="2026-02-02T07:01:36.800Z">
 <meta property="article:author" content="Feng Yunji">
+<meta property="article:tag" content="MASt3R">
+<meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary">
 
 
-<title >Feng Yunji's Blog</title>
+<title >MASt3R-SLAM</title>
 
 <!-- Favicon -->
 
@@ -41,6 +47,8 @@
 
     
     
+<link rel="stylesheet" href="https://unpkg.com/katex@latest/dist/katex.min.css">
+
 
 
 
@@ -55,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"blog.fengyunji.site","author":"Feng Yunji","root":"/","typed_text":null,"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.jpg","icon16":"/img/favicon.jpg","icon32":"/img/favicon.jpg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！","appleTouchIcon":null,"showText":"(/≧▽≦/)回来啦~","hideText":"走啦？"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy","user_tag":"fas fa-user-alt"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"03/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"covers":["/img/block.jpg","https://img2.wallspic.com/previews/7/6/8/1/7/171867/171867-wu_kong-chao_ji_sai_ya_ren-sai_ya_ren-zamasu-long_zhu-500x.jpg","https://img3.wallspic.com/previews/2/0/1/8/6/168102/168102-yi_shu-ka_tong-mian_bu_biao_qing-kuai_le_de-ji_qie-500x.jpg","https://img2.wallspic.com/previews/2/6/4/3/7/173462/173462-qi_fen-zi_se_de-zi_ran_jing_guan-yu_hui-de_ping_xian-500x.jpg","https://img2.wallspic.com/previews/3/3/9/1/3/131933/131933-mo_xing-xiao_jie-huang_se_de-nu_hai-fa_xing-500x.jpg","https://img1.wallspic.com/previews/8/3/4/6/2/126438/126438-wei_lai_zhu_yi-shu_ma_yi_shu-jie_duan-zi_ben_shi-yi_shu-500x.jpg","https://img2.wallspic.com/previews/0/1/5/0/7/170510/170510-guang-azure-zi_se_de-zi_ran_huan_jing-zi_ran_jing_guan-500x.jpg","https://img2.wallspic.com/previews/3/6/9/6/5/156963/156963-yi_shu-qi_fen-yu_hui-shou_shi-ren_men_zai_zi_ran_jie-500x.jpg","https://img1.wallspic.com/previews/0/9/3/5/6/165390/165390-qi_fen-zi_se_de-zi_ran_huan_jing-zi_ran_jing_guan-tian_wen_xue_dui_xiang-500x.jpg","https://img3.wallspic.com/previews/2/8/6/1/7/171682/171682-yi_kuai-xing_zhi-ye_ti-yi_shu-shui_xia-500x.jpg","https://img1.wallspic.com/previews/7/1/9/9/89917/89917-bo_xi_ta_nuo-an_zhuang_de_feng_jing-cheng_shi-suo_lun_tuo-shan_zhan-500x.jpg","https://img1.wallspic.com/previews/6/2/3/5/6/165326/165326-pang_ke2077-pang_ke-qi_fen-xing_zhi-zi_se_de-500x.jpg","https://img2.wallspic.com/previews/8/9/4/5/6/165498/165498-ka_tong-tao-pin_hong_se-zhang_zhang_de_tou_fa-ji_qie-500x.jpg","https://img3.wallspic.com/previews/5/7/4/2/7/172475/172475-yi_shu-tao-tou_fa-ka_tong-500x.jpg","https://img2.wallspic.com/previews/5/0/9/0/70905/70905-hai_yang-ma_er_dai_fu-tian_kong-du_jia_cun-huan_jiao-500x.jpg","https://img3.wallspic.com/previews/4/3/4/8/6/168434/168434-xing_zhi-zi_ran_jing_guan-dan_huang-shui_dao-zhi_bei-500x.jpg","https://img2.wallspic.com/previews/6/5/4/5/6/165456/165456-giy_fu_gang-e_mo_sha_shoukimetsu_no_yaiba-shan_zi_de_yi_shu-zi_se_de-dian_lan_se_de-500x.jpg","https://img1.wallspic.com/previews/5/4/0/4/7/174045/174045-jian_ying-qi_fen-ren_men_zai_zi_ran_jie-tian_wen_xue_dui_xiang-yi_shu-500x.jpg","https://img1.wallspic.com/previews/9/3/1/6/5/156139/156139-feng_jing_hua-yi_shu-shu_ma_yi_shu-qi_fen-sheng_tai_qu-500x.jpg","https://img2.wallspic.com/previews/7/6/4/5/7/175467/175467-wo_de_xue_shu_jie_de_ying_xiong-tao-yi_shu-ka_tong-azure-500x.jpg","https://img1.wallspic.com/previews/3/7/0/0/7/170073/170073-liang_ge_ling-ka_tong-shou_shi-chuang_zao_xing_de_yi_shu-hong_se_de-500x.jpg","https://img1.wallspic.com/previews/1/8/3/6/6/166381/166381-shi_zi-xin_ba-bai_se_shi_zi-hu_xu-mao_ke-500x.jpg","https://img3.wallspic.com/previews/4/2/2/3/7/173224/173224-ri_luo-shui_zi_yuan-qi_fen-yu_hui-zi_se_de-500x.jpg","https://img1.wallspic.com/previews/7/5/7/9/6/169757/169757-ji_bo_li_de_bo_wu_guan-zi_ran_jing_guan-yi_shu-ji_yun-500x.jpg","https://img1.wallspic.com/previews/5/2/0/6/7/176025/176025-qi_fen-tian_wen_xue_dui_xiang-yi_shu-dian_lan_se_de-yuan_quan-500x.jpg","https://img3.wallspic.com/previews/6/5/8/1/4/141856/141856-hen_ku_de-hui_hua-yu_yan_jing_tou-zhai_nan-tu_xing_she_ji-500x.jpg","https://img1.wallspic.com/previews/2/1/6/5/6/165612/165612-kimetsu_no_yaiba-e_mo_sha_shoukimetsu_no_yaiba-tao-tou_fa-wai_tao-500x.jpg","https://img3.wallspic.com/previews/5/1/0/2/4/142015/142015-feng_ge-ka_ka_xi_qi_mu-huo_ying_ren_zhe-tu_xing_she_ji-shi_jue_yi_shu-500x.jpg","https://img1.wallspic.com/previews/8/8/7/8/5/158788/158788-e_mo_sha_shoukimetsu_no_yaiba-shnen_man_hua-tao-ka_tong-azure-500x.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"preload":true,"trigger":"auto","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-02-02 15:02:56"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-02-02 15:01:36"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
@@ -277,10 +285,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            The article archive
+                            Hi my new friend!
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            云间连下榻，<br>天上接行杯。
+                            MASt3R-SLAM
                         </h1>
 
                         
@@ -290,7 +298,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        archives
+                                        MASt3R-SLAM
                                     </span>
                                 </li>
                             </ul>
@@ -389,327 +397,125 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list"><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">（14）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">（17）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">（4）</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/28
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            16:12
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            Feng Yunji
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MASt3R-SLAM 是一种基于深度学习的实时单目 SLAM（Simultaneous Localization and Mapping）系统。它结合了传统 SLAM 方法和深度神经网络的优势，能够在环境中实现高精度的相机定位和三维地图构建。相比于先前的DROID-SLAM，进一步提升了优化的效率和精度，本文重点关注前端优化部分。</p>
+<h2 id="位姿优化"><a href="#位姿优化" class="headerlink" title="位姿优化"></a>位姿优化</h2><p>MASt3R-SLAM的位姿优化函数为<code>gauss_newton_ray_cuda</code>，通过射线对齐方法(Ray Alignment)来优化相机位姿。其核心思想是最小化观测点与地图点之间的距离误差。</p>
+<ul>
+<li><p>Sim3群表示</p>
+<p>  平移$t\in \mathbb{R}^3$，旋转$q&#x3D;[q_x,q_y,q_z,q_w]$，缩放$s\in \mathbb{R}^+$，则李代数参数化可表示为：<br>  $$<br>  \zeta&#x3D;[\tau,\omega,\sigma]^T \in \mathbb{R}^7<br>  $$<br>  其中$\tau \in \mathbb{R}^3$表示平移，$\omega \in \mathbb{R}^3$表示旋转，$\sigma \in \mathbb{R}$表示尺度对数。</p>
+</li>
+<li><p>相对位姿计算</p>
+<p>  给定两个相机位姿$T_i,T_j \in \mathrm{Sim}(3)$，其相对位姿$T_{ij}$可通过李代数指数映射计算：<br>  $$<br>  \begin{aligned}<br>  T_{ij} &amp;&#x3D; T_j \circ T_i^{-1}\<br>  s_{ij}&amp;&#x3D;s_i^{-1}\cdot s_j\<br>  q_{ij}&amp;&#x3D;q_i^{-1}\otimes q_j\<br>  t_{ij}&amp;&#x3D;s_i^{-1}\cdot R_i^{-1} (t_j - t_i)<br>  \end{aligned}<br>  $$</p>
+</li>
+</ul>
+<h2 id="残差定义"><a href="#残差定义" class="headerlink" title="残差定义"></a>残差定义</h2><h3 id="射线方向残差"><a href="#射线方向残差" class="headerlink" title="射线方向残差"></a>射线方向残差</h3><p>将点归一化为单位射线：<br>$$<br>\mathbf{r_i}&#x3D;\frac{X_i}{|X_i|}<br>$$<br>将$X_j$变换到相机$i$坐标系下：<br>$$<br>X_{j,C_i}&#x3D;s_{ij} R_{ij} X_j+t_{ij}<br>$$<br>归一化变换后的点：<br>$$<br>\mathbf{r_{j,C_i}}&#x3D;\frac{X_{j,C_i}}{|X_{j,C_i}|}<br>$$<br>射线方向残差定义为：<br>$$<br>\mathbf{e_{ray}}&#x3D;\mathbf{r_i}-\mathbf{r_{j,C_i}}<br>$$</p>
+<h3 id="距离残差"><a href="#距离残差" class="headerlink" title="距离残差"></a>距离残差</h3><p>$$<br>e_{dist}&#x3D;|\mathbf{X_i}-\mathbf{X_{j,C_i}}|<br>$$</p>
+<h2 id="雅可比矩阵计算"><a href="#雅可比矩阵计算" class="headerlink" title="雅可比矩阵计算"></a>雅可比矩阵计算</h2><p>目标：$J_i&#x3D;\frac{\partial e}{\partial \zeta_i}, J_j&#x3D;\frac{\partial e}{\partial \zeta_j}$</p>
+<p>链式法则分解：<br>$$<br>\frac{\partial e}{\partial \zeta_j} &#x3D; \frac{\partial e}{\partial \mathbf{r_{j,C_i}}}\cdot \frac{\partial \mathbf{r_{j,C_i}}}{\partial X_{j,C_i}} \cdot \frac{\partial X_{j,C_i}}{\partial \zeta_{i,j}}\cdot \frac{\partial \zeta_{i,j}}{\partial \zeta_j}<br>$$</p>
+<h3 id="归一化雅可比"><a href="#归一化雅可比" class="headerlink" title="归一化雅可比"></a>归一化雅可比</h3><p>$$<br>\mathbf{r}&#x3D;\frac{X}{|X|}&#x3D;\frac{X}{\sqrt{X_x^2+X_y^2+X_z^2}}<br>$$<br>令$n&#x3D;|X|&#x3D;\sqrt{X^TX}$:<br>$$<br>\begin{aligned}<br>\frac{\partial n}{\partial X}&amp;&#x3D;\frac{X^T}{n}\<br>\frac{\partial \mathbf{r}}{\partial X}&amp;&#x3D;\frac{\partial }{\partial X}(\frac{X}{n})\<br>&amp;&#x3D;\frac{1}{n}I - \frac{X}{n^2}\frac{\partial n}{\partial X}\<br>&amp;&#x3D;\frac{1}{n}(I-\frac{XX^T}{n^2})\<br>&amp;&#x3D;\frac{1}{|X|}(I - \mathbf{r}\mathbf{r}^T)\<br>&amp;&#x3D;\frac{1}{|X|}(I-\frac{XX^T}{|X|^2})<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>\frac{\partial r_x}{\partial X_x}&amp;&#x3D;\frac{1}{|X|}-\frac{X_x^2}{|X|^3}\<br>\frac{\partial r_x}{\partial X_y}&amp;&#x3D;-\frac{X_x X_y}{|X|^3}\<br>\frac{\partial r_x}{\partial X_z}&amp;&#x3D;-\frac{X_x X_z}{|X|^3}<br>\end{aligned}<br>$$<br>同理可得$r_y,r_z$对$X$的偏导数</p>
+<h3 id="Sim3变换雅可比"><a href="#Sim3变换雅可比" class="headerlink" title="Sim3变换雅可比"></a>Sim3变换雅可比</h3><p>$$<br>X’&#x3D;sRX+t<br>$$<br>李代数扰动：<br>$$<br>\delta \zeta&#x3D;[\delta \tau,\delta \omega,\delta \sigma]^T<br>$$<br>$$<br>X’&#x3D;\exp(\delta \boldsymbol{\zeta})\cdot X \approx X+\left.\frac{\partial X’}{\partial \zeta}\right|<em>{\zeta&#x3D;0}\delta \zeta<br>$$<br>平移：<br>$$<br>\frac{\partial X’}{\partial \zeta}&#x3D;\begin{bmatrix}<br>\frac{\partial X’}{\partial \tau} &amp; \frac{\partial X’}{\partial \omega} &amp; \frac{\partial X’}{\partial \sigma}<br>\end{bmatrix}<br>$$<br>$$<br>\frac{\partial X’}{\partial \tau} &#x3D; I</em>{3\times 3}<br>$$<br>旋转：<br>$$<br>\begin{aligned}<br>X’&amp;&#x3D;RX\<br>\delta R&amp;&#x3D;I+[\delta \omega]_\times\<br>X’&amp;&#x3D;(I+[\delta \omega]_\times)X&#x3D;X+[\delta \omega]_\times X<br>\end{aligned}<br>$$<br>$$<br>\frac{\partial X’}{\partial \omega} &#x3D; -[X’]_\times\<br>&#x3D;\begin{bmatrix}<br>0 &amp; x’_z &amp; -x’_y \<br>-x’_z &amp; 0 &amp; x’_x \<br>x’_y &amp; -x’<em>x &amp; 0<br>\end{bmatrix}<br>$$<br>尺度：<br>$$<br>X’&#x3D;sRX+t<br>$$<br>$$<br>\frac{\partial X’}{\partial s}&#x3D;RX<br>$$<br>设$s&#x3D;e^\sigma$，则：<br>$$<br>\frac{\partial X’}{\partial \sigma}&#x3D;\frac{\partial X’}{\partial s}\cdot \frac{\partial s}{\partial \sigma}&#x3D;sRX&#x3D;X’-t\approx X’<br>$$<br>$$<br>\begin{aligned}<br>\frac{\partial r}{\partial \sigma}&amp;&#x3D;\frac{\partial}{\partial \sigma}(\frac{X’}{|X’|})&#x3D;\frac{1}{|X’|}(I-\frac{X’X’^T}{|X’|^2})\cdot \frac{\partial X’}{\partial \sigma}\<br>&amp;&#x3D;\frac{1}{|X’|}(I-\frac{X’X’^T}{|X’|^2})X’&#x3D;0<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>\frac{\partial e</em>{dist}}{\partial \sigma}&amp;&#x3D;\frac{\partial |X’|}{\partial \sigma}&#x3D;\frac{\partial |X’|}{\partial X’}\cdot \frac{\partial X’}{\partial \sigma}&#x3D;\frac{X’^T}{|X’|}\cdot X’&#x3D;|X’|<br>\end{aligned}<br>$$<br>完整的雅可比为：</p>
+<p>对于点$X’&#x3D;sRX+t$:<br>$$<br>J_{local}&#x3D;\begin{bmatrix}<br>I_{3\times 3} &amp; -[X’]<em>\times &amp; X’<br>\end{bmatrix}<br>$$<br>射线方向误差：<br>$$<br>\begin{aligned}<br>J</em>{ray}^{local}&amp;&#x3D;\frac{\partial r}{\partial X’}\cdot J_{local}\<br>J_{i,j}&amp;&#x3D;\sum_{k&#x3D;1}^3 \frac{\partial r_i}{\partial X’_k} \cdot \frac{\partial X’_k}{\partial \zeta_j}<br>\end{aligned}<br>$$</p>
+<h3 id="伴随变换"><a href="#伴随变换" class="headerlink" title="伴随变换"></a>伴随变换</h3><p>优化变量是全局位姿$\zeta_i,\zeta_j$，但雅可比是在局部坐标系$T_{ij}$下计算的，需要通过伴随变换转换：<br>$$<br>J_{global}&#x3D;\mathbf{Ad}<em>{T</em>{ij}}^{-T}J_{local}<br>$$<br>Sim3伴随表示：<br>$$<br>\mathbf{Ad}&#x3D;\begin{bmatrix}<br>sR &amp; 0 &amp; 0 \<br>[t]<em>\times sR &amp; sR &amp; 0 \<br>t^TsR &amp; 0 &amp; 1<br>\end{bmatrix}<br>$$<br>伴随矩阵的转置：<br>$$<br>J</em>{global} &#x3D; \mathbf{Ad}<em>{T</em>{ij}}^{-T} J_{local}<br>$$<br>伴随逆公式：<br>$$<br>\mathbf{Ad}^{-1}&#x3D;\begin{bmatrix}<br>s^{-1}R^T &amp; 0 &amp; 0 \<br>-s^{-1}[t]<em>\times R^T &amp; s^{-1}R^T &amp; 0 \<br>-s^{-1}t^TR^T &amp; 0 &amp; 1<br>\end{bmatrix}<br>$$<br>从相机$j$到相机$i$的雅可比：<br>$$<br>\begin{aligned}<br>J_j&amp;&#x3D;\frac{\partial e}{\partial \zeta_j} \<br>&amp;&#x3D;\frac{\partial e}{\partial X</em>{j,C_i}} \cdot \frac{\partial X_{j,C_i}}{\partial \zeta_j} \cdot \mathbf{Ad}<em>{T</em>{ij}}^{-T}<br>\end{aligned}<br>$$<br>对相机i的雅可比：<br>$$<br>\begin{aligned}<br>T_{ij}&amp;&#x3D;T_i^{-1} \circ T_j\<br>J_i&amp;&#x3D;\frac{\partial e}{\partial \zeta_i} \<br>&amp;&#x3D;-\frac{\partial e}{\partial X_{j,C_i}} \cdot \frac{\partial X_{j,C_i}}{\partial \zeta_{ij}} \cdot \mathbf{Ad}<em>{T</em>{ij}}^{-T} \<br>&amp;&#x3D;-J_j<br>\end{aligned}<br>$$</p>
+<h2 id="Gauss-Newton优化"><a href="#Gauss-Newton优化" class="headerlink" title="Gauss-Newton优化"></a>Gauss-Newton优化</h2><p>Hessian矩阵：</p>
+<p>对每条边(相机对i,j)的Hessian矩阵为：<br>$$<br>\begin{aligned}<br>H_{ii}&amp;&#x3D;\sum_k J_i^{kT}W_kJ_i^k\<br>H_{ij}&amp;&#x3D;\sum_k J_i^{kT}W_kJ_j^k\<br>H_{jj}&amp;&#x3D;\sum_k J_j^{kT}W_kJ_j^k<br>\end{aligned}<br>$$<br>梯度：<br>$$<br>\begin{aligned}<br>g_i&amp;&#x3D;\sum_k J_i^{kT}W_k e_k\<br>g_j&amp;&#x3D;\sum_k J_j^{kT}W_k e_k<br>\end{aligned}<br>$$<br>得到：<br>$$<br>H\cdot \Delta \zeta &#x3D; -g<br>$$</p>
 
-<!-- history -->
+</article>
+    
+    <div class="trm-reward">
+        
+            <span class="trm-reward-btn trm-glow" onclick='var qr = document.getElementById("qr"); qr.style.display = (qr.style.display === "none") ? "block" : "none";'>
+                <i class="iconfont fas fa-hand-holding-usd"></i>
+            </span>
+        
+        <p class="trm-reward-comment">我是学生，给我钱</p>
+        <div id="qr" style="display:none;">
+            
+                <div style="display:inline-block">
+                    <a rel="noopener noreferrer" href='/img/wechat.jpeg' target='_blank' >
+                       <img src="/img/wechat.jpeg" alt="微信" loading="lazy">
+                    </a>
+                    <p>微信</p>
+                </div>
+            
+        </div>
+    </div>
 
-<div class="row">
+    
+
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                所有归档
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/DROID-SLAM/" class="trm-cover-frame trm-anima-link">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/MASt3R-SLAM/" class="trm-anima-link">
-                                        MASt3R-SLAM
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/28</li>
-                                        <li class="trm-accent-color">16:12</li>
-                                        
-                                        <li>1.3k</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/">
+                    三维重建
+                </a>
             </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/DROID-SLAM/" class="trm-anima-link">
-                                        DROID-SLAM
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/26</li>
-                                        <li class="trm-accent-color">10:33</li>
-                                        
-                                        <li>1.5k</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/NAS-tailscale%E7%82%B9%E5%AF%B9%E7%82%B9%E7%A9%BF%E9%80%8F/" class="trm-anima-link">
-                                        NAS+tailscale点对点穿透
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">08/02</li>
-                                        <li class="trm-accent-color">16:18</li>
-                                        
-                                        <li>332</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/MASt3R-SLAM%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/" class="trm-anima-link">
-                                        MASt3R-SLAM核心流程解析
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">07/21</li>
-                                        <li class="trm-accent-color">20:20</li>
-                                        
-                                        <li>980</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/%E6%97%A0%E4%BA%BA%E8%89%87%E9%9B%86%E7%BE%A4%E7%BC%96%E9%98%9F%E6%8E%A7%E5%88%B6/" class="trm-anima-link">
-                                        无人艇集群编队控制
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">07/08</li>
-                                        <li class="trm-accent-color">17:11</li>
-                                        
-                                        <li>704</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/SmartSharkVI/" class="trm-anima-link">
-                                        SmartSharkVI
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">07/01</li>
-                                        <li class="trm-accent-color">16:30</li>
-                                        
-                                        <li>576</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/SmartSharkV/" class="trm-anima-link">
-                                        Smart Shark V
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">06/30</li>
-                                        <li class="trm-accent-color">21:36</li>
-                                        
-                                        <li>983</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/SmartSharkIV/" class="trm-anima-link">
-                                        Smart Shark IV
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">06/30</li>
-                                        <li class="trm-accent-color">19:44</li>
-                                        
-                                        <li>1.1k</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/Zotero%E6%B7%BB%E5%8A%A0%E5%9D%9A%E6%9E%9C%E4%BA%91%E5%AD%98%E5%82%A8/" class="trm-anima-link">
-                                        Zotero添加坚果云存储
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">06/16</li>
-                                        <li class="trm-accent-color">21:07</li>
-                                        
-                                        <li>216</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/%E5%AE%87%E6%A0%91Go2%E6%9C%BA%E5%99%A8%E7%8B%97%E9%AB%98%E5%B1%82%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4%E4%BB%BF%E7%9C%9F/" class="trm-anima-link">
-                                        宇树Go2机器狗高层控制命令仿真
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">04/28</li>
-                                        <li class="trm-accent-color">21:35</li>
-                                        
-                                        <li>513</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <h5>
+                <a href="/DROID-SLAM/" class="trm-anima-link">
+                    DROID-SLAM
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/11/26</li>
+                <li>10:33</li>
+                
+                    <li>1.5k</li>
+                
+                
+                    <li>8</li>
+                
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
+    
 
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a>
-    </div>
-
-
+    <div class="trm-card trm-scroll-animation comment-container">
+    <div id="tcomment"></div>
+</div>
 
 
 
@@ -755,9 +561,29 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="简介"><a rel="nofollow" class="trm-toc-link" href="#简介"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">简介</span></a></li><li class="trm-toc-item trm-toc-level-2" title="位姿优化"><a rel="nofollow" class="trm-toc-link" href="#位姿优化"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">位姿优化</span></a></li><li class="trm-toc-item trm-toc-level-2" title="残差定义"><a rel="nofollow" class="trm-toc-link" href="#残差定义"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">残差定义</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="射线方向残差"><a rel="nofollow" class="trm-toc-link" href="#射线方向残差"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">射线方向残差</span></a></li><li class="trm-toc-item trm-toc-level-3" title="距离残差"><a rel="nofollow" class="trm-toc-link" href="#距离残差"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">距离残差</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="雅可比矩阵计算"><a rel="nofollow" class="trm-toc-link" href="#雅可比矩阵计算"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">雅可比矩阵计算</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="归一化雅可比"><a rel="nofollow" class="trm-toc-link" href="#归一化雅可比"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">归一化雅可比</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Sim3变换雅可比"><a rel="nofollow" class="trm-toc-link" href="#Sim3变换雅可比"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">Sim3变换雅可比</span></a></li><li class="trm-toc-item trm-toc-level-3" title="伴随变换"><a rel="nofollow" class="trm-toc-link" href="#伴随变换"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">伴随变换</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Gauss-Newton优化"><a rel="nofollow" class="trm-toc-link" href="#Gauss-Newton优化"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">Gauss-Newton优化</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
     
     
     <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
@@ -830,8 +656,51 @@
 
     <!-- 数学公式 -->
     
+        
+<script src="https://unpkg.com/katex@latest/dist/katex.min.js" data-swup-reload-script></script>
+
+        
+            
+<script src="https://unpkg.com/katex@latest/dist/contrib/copy-tex.min.js" data-swup-reload-script></script>
+
+        
+        
+<script src="https://unpkg.com/katex@latest/dist/contrib/auto-render.min.js" data-swup-reload-script></script>
+
+        <script data-swup-reload-script>
+              window.renderMathInElement(document.body, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                ],
+                ...{},
+            })
+        </script>
+    
 
     <!-- 评论插件 -->
+    
+        
+
+        
+
+            
+<script src="//cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js" data-swup-reload-script data-reset="true"></script>
+
+            <script data-swup-reload-script>
+                twikoo.init({
+                    ...{"enable":true,"envId":"https://netlify.fengyunji.site/.netlify/functions/twikoo","region":null,"option":null},
+                    el:'#tcomment'
+                }).then(function () {
+                    let container = document.querySelector('body>.tk-admin-container')
+                    if(container) container.remove()
+                    document.body.append(document.querySelector('.tk-admin-container'))
+                });;
+            </script>
+
+        
     
 
 		
