@@ -499,12 +499,10 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
   <entry>
     <title>Smart Shark IV</title>
     <url>/SmartSharkIV/</url>
-    <content><![CDATA[<h2 id="无人驾驶方程式车队"><a class="markdownIt-Anchor" href="#无人驾驶方程式车队"></a> 无人驾驶方程式车队</h2>
-<p>官网链接：<a href="https://www.bitfsd.com/">https://www.bitfsd.com/</a></p>
+    <content><![CDATA[<h2 id="无人驾驶方程式车队"><a href="#无人驾驶方程式车队" class="headerlink" title="无人驾驶方程式车队"></a>无人驾驶方程式车队</h2><p>官网链接：<a href="https://www.bitfsd.com/">https://www.bitfsd.com/</a></p>
 <p>北京理工大学无人驾驶方程式车队 (Beijing Institute of Technology Formula Student Driverless Team, BITFSD) 成立于2015年9月，车队工作室位于北京市房山区北京理工大学良乡校区工程训练中心，现有来自我校不同学院的本科生、研究生共计100余人，是一支以“大学生无人驾驶方程式大赛”等各类创新创业大赛为牵引、瞄向无人车辆高端技术前沿的科技创新团队。</p>
 <p>车队每赛季自主设计研发一辆全新的无人驾驶方程式赛车——“灰鲨 (Smart Shark) ”系列，具备环境感知、定位导航、独立驱动及并联式线控底盘等关键技术，以“中国大学生无人驾驶方程式大赛”为主要竞赛项目，并灵活参加其他比赛及社会活动。</p>
-<h2 id="加入bitfsd"><a class="markdownIt-Anchor" href="#加入bitfsd"></a> 加入BITFSD</h2>
-<p>我一直对科创有着极大的热情，在7月结束高考后就与自动化学院的RoboMaster机器人战队建立了联系，2019年考入北理工，我参与了机器人队的入队培训，同时也积极地参与到睿信书院（自动化、计算机、光电三大学院）开展的各类科创活动中。但在对机器人队逐渐的熟悉的过程里，我发现团队的氛围似乎并不太适合我，于是在完成培训后并没有参加入队考核，不过在此期间学习的SolidWorks软件对我硕士阶段设计无人机帮助极大。在2019年12月份左右的时候，中国大学生方程式大赛<a href="http://www.formulastudent.com.cn/">FSC</a>落幕，无人方程式车队开始招新，他们制作的招新视频展示了无人驾驶技术作为一项最前沿的科技，而我有机会能够参与其中，这对于刚刚进入大学的我来说具有极大的诱惑力，于是我果断报名了车队。</p>
+<h2 id="加入BITFSD"><a href="#加入BITFSD" class="headerlink" title="加入BITFSD"></a>加入BITFSD</h2><p>我一直对科创有着极大的热情，在7月结束高考后就与自动化学院的RoboMaster机器人战队建立了联系，2019年考入北理工，我参与了机器人队的入队培训，同时也积极地参与到睿信书院（自动化、计算机、光电三大学院）开展的各类科创活动中。但在对机器人队逐渐的熟悉的过程里，我发现团队的氛围似乎并不太适合我，于是在完成培训后并没有参加入队考核，不过在此期间学习的SolidWorks软件对我硕士阶段设计无人机帮助极大。在2019年12月份左右的时候，中国大学生方程式大赛<a href="http://www.formulastudent.com.cn/">FSC</a>落幕，无人方程式车队开始招新，他们制作的招新视频展示了无人驾驶技术作为一项最前沿的科技，而我有机会能够参与其中，这对于刚刚进入大学的我来说具有极大的诱惑力，于是我果断报名了车队。</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=79440740&bvid=BV1KJ41167X7&cid=135942081&p=1" 
           width="800" 
@@ -520,9 +518,9 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     BITFSD 2019招新宣传视频
   </p>
 </div>
+
 <p>其实一开始我的志愿是去机械组，因为我认为机械才是最真实的浪漫，但好在无人组的学长看重了我高中阶段参加信息学竞赛的经历，于是我顺理成章加入了无人系统组，在此特别感谢泰然学长！</p>
-<h2 id="参与工作"><a class="markdownIt-Anchor" href="#参与工作"></a> 参与工作</h2>
-<p>进入车队参与正式工作后，恰逢疫情原因完全在做仿真的算法，能够在仿真里控制方程式赛车完成无人驾驶，让当时刚大一的我获得了巨大的成就感，不过这仅仅是开胃菜。</p>
+<h2 id="参与工作"><a href="#参与工作" class="headerlink" title="参与工作"></a>参与工作</h2><p>进入车队参与正式工作后，恰逢疫情原因完全在做仿真的算法，能够在仿真里控制方程式赛车完成无人驾驶，让当时刚大一的我获得了巨大的成就感，不过这仅仅是开胃菜。</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <video width="800" height="450" controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <source src="2020仿真.mp4" type="video/mp4">
@@ -532,6 +530,7 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     仿真算法测试
   </p>
 </div>
+
 <p>我和学长们一起重构了无人系统的控制框架，采用动力学-运动学融合模型，使用ACADO求解器实现了 <strong>50步200Hz</strong> 的控制求解速度，并同步重写了各个赛项的规划策略。</p>
 <p>以第n作者身份在中国汽车工程学会主办的年会技术论坛中发表了论文《Real-Time Motion Planning and Control for a Formula Student》</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
@@ -540,6 +539,7 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     2020年会技术论坛论文
   </p>
 </div>
+
 <p>等到2020年底回到学校后，我第一次参与了实车的测试，这是我第一次见到算法在方程式赛车上控制无人驾驶</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <video width="800" height="450" controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
@@ -550,6 +550,7 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     Smart Shark IV 2020试车跑动
   </p>
 </div>
+
 <p>算法从仿真到实车有一个非常大的gap，有许多硬件的原因需要调整，我们花费了一整个国庆假期，在卡丁车俱乐部租场地调试</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <img src="2020年试车.jpg" alt="2020试车" loading="lazy" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>
@@ -557,14 +558,13 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     2020年试车现场
   </p>
 </div>
-<h2 id="比赛"><a class="markdownIt-Anchor" href="#比赛"></a> 比赛</h2>
-<p>由于疫情影响，我没有作为正式队员参与线下赛事，在FSAC 2020年的比赛中，Smart Shark IV获得了<strong>冠军</strong>，并打破了“直线加速”赛项的中国记录，最高时速达到<strong>10m/s</strong>，能够勉强看到ETH的AMZ车队尾灯。</p>
+
+<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><p>由于疫情影响，我没有作为正式队员参与线下赛事，在FSAC 2020年的比赛中，Smart Shark IV获得了<strong>冠军</strong>，并打破了“直线加速”赛项的中国记录，最高时速达到<strong>10m&#x2F;s</strong>，能够勉强看到ETH的AMZ车队尾灯。</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=759211060&bvid=BV1864y1z7r3&cid=371655929&p=1" 
           width="800" 
           height="450" 
           scrolling="no" 
-          border="0" 
           frameborder="no" 
           framespacing="0" 
           allowfullscreen="true"
@@ -574,13 +574,13 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     FSAC 2020赛季Smart Shark IV直线加速比赛
   </p>
 </div>
+
 <p>同时，高速巡迹赛项也获得了冠军。（车载go pro拍摄）</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=246545979&bvid=BV14v411e764&cid=294361355&p=1" 
           width="800" 
           height="450" 
           scrolling="no" 
-          border="0" 
           frameborder="no" 
           framespacing="0" 
           allowfullscreen="true"
@@ -590,6 +590,7 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     FSAC 2020赛季Smart Shark IV高速巡迹比赛
   </p>
 </div>
+
 <p>在这一年里，我还跟着车队前往央视拍摄了2020中国汽车风云盛典</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <img src="2020中国汽车风云盛典.jpg" alt="2020中国汽车风云盛典" loading="lazy" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>
@@ -597,6 +598,7 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     2020中国汽车风云盛典
   </p>
 </div>
+
 <p>见到了CBD那栋需要用广角镜头才能拍下来的大楼</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
   <img src="2020CBD大楼.jpg" alt="CBD大楼" loading="lazy" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>
@@ -604,6 +606,7 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
     CBD大楼广角拍摄
   </p>
 </div>
+
 <p>这一年是我学习科创的第一年。</p>
 ]]></content>
       <categories>
@@ -1707,6 +1710,19 @@ steps:<br />
       <tags>
         <tag>MASt3R</tag>
         <tag>SLAM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>POMDP中的信念空间</title>
+    <url>/POMDP%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%BF%B5%E7%A9%BA%E9%97%B4/</url>
+    <content><![CDATA[<p>POMDP（Partially Observable Markov Decision Process，部分可观测马尔可夫决策过程）可以表示为：<br>$$\mathcal{M}&#x3D;(\mathcal{S,A,O,T,Z})$$</p>
+<p>相比于MDP，POMDP引入了对环境状态的不完全观测。在POMDP中，智能体无法直接观察到环境的真实状态，而是通过观测获得部分信息。因此，智能体需要维护一个<strong>信念状态（belief state）</strong>，即对环境状态的概率分布，以便在不确定性下进行决策。观测$\mathcal{Z}$是所有观测量$z$构成的集合，观测函数$\mathcal{O}$得到观测$z$的概率分布：<br>$$\mathcal{O}(z|s’,a)&#x3D;P(z|s’,a)$$</p>
+]]></content>
+      <categories>
+        <category>主动感知</category>
+      </categories>
+      <tags>
+        <tag>背景知识</tag>
       </tags>
   </entry>
 </search>
