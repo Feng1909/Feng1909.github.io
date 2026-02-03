@@ -576,7 +576,16 @@ InstantSplat，这是一种高效的新视图合成（NVS）方法，专门设�
 </div>
 <p>同时，高速巡迹赛项也获得了冠军。（车载go pro拍摄）</p>
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px 0;">
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=246545979&bvid=BV14v411e764&cid=294361355&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+  <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=246545979&bvid=BV14v411e764&cid=294361355&p=1" 
+          width="800" 
+          height="450" 
+          scrolling="no" 
+          border="0" 
+          frameborder="no" 
+          framespacing="0" 
+          allowfullscreen="true"
+          style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  </iframe>
   <p style="margin-top: 8px; margin-bottom: 0; font-size: 14px; color: #666; font-style: italic; text-align: center;">
     FSAC 2020赛季Smart Shark IV高速巡迹比赛
   </p>
