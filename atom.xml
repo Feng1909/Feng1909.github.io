@@ -6,7 +6,7 @@
   <link href="https://blog.fengyunji.site/atom.xml" rel="self"/>
   
   <link href="https://blog.fengyunji.site/"/>
-  <updated>2026-02-03T13:41:37.404Z</updated>
+  <updated>2026-02-03T13:59:30.982Z</updated>
   <id>https://blog.fengyunji.site/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.fengyunji.site/POMDP%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%BF%B5%E7%A9%BA%E9%97%B4/"/>
     <id>https://blog.fengyunji.site/POMDP%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%BF%B5%E7%A9%BA%E9%97%B4/</id>
     <published>2026-02-03T13:29:33.000Z</published>
-    <updated>2026-02-03T13:41:37.404Z</updated>
+    <updated>2026-02-03T13:59:30.982Z</updated>
     
-    <content type="html"><![CDATA[<p>POMDP（Partially Observable Markov Decision Process，部分可观测马尔可夫决策过程）可以表示为：<br>$$\mathcal{M}&#x3D;(\mathcal{S,A,O,T,Z})$$</p><p>相比于MDP，POMDP引入了对环境状态的不完全观测。在POMDP中，智能体无法直接观察到环境的真实状态，而是通过观测获得部分信息。因此，智能体需要维护一个<strong>信念状态（belief state）</strong>，即对环境状态的概率分布，以便在不确定性下进行决策。观测$\mathcal{Z}$是所有观测量$z$构成的集合，观测函数$\mathcal{O}$得到观测$z$的概率分布：<br>$$\mathcal{O}(z|s’,a)&#x3D;P(z|s’,a)$$</p>]]></content>
+    <content type="html"><![CDATA[<p>POMDP（Partially Observable Markov Decision Process，部分可观测马尔可夫决策过程）可以表示为：<br>$$\mathcal{M}&#x3D;(\mathcal{S,A,O,T,Z})$$</p><p>相比于MDP，POMDP引入了对环境状态的不完全观测。在POMDP中，智能体无法直接观察到环境的真实状态，而是通过观测获得部分信息。因此，智能体需要维护一个<strong>信念状态（belief state）</strong>，即对环境状态的概率分布，以便在不确定性下进行决策。观测$\mathcal{Z}$是所有观测量$z$构成的集合，观测函数$\mathcal{O}$得到观测$z$的概率分布：<br>$$\mathcal{O}(z|s’,a)&#x3D;P(z|s’,a)$$</p><h2 id="MDP问题的求解"><a href="#MDP问题的求解" class="headerlink" title="MDP问题的求解"></a>MDP问题的求解</h2><p>MDP问题的求解目标是找到最优策略对应的状态值函数和动作值函数。</p><p>策略的定义为：<br>$$\pi(a|s)$$<br>代表策略在状态$s$下选择动作$a$的概率。对应的状态值函数和动作值函数分别为：<br>$$V^{\pi}(s)&#x3D;E_{\pi}[G_t|s]$$<br>$$Q^{\pi}(s,a)&#x3D;E_{\pi}[G_t|s,a]$$<br>其中，$E$代表期望，$G_t$表示从时间步$t$开始的累积折扣奖励，$\gamma$为折扣因子：<br>$$G_t&#x3D;\sum_{k&#x3D;0}^{\infty}\gamma^k r_{t+k+1}$$<br>不同的策略会导致不同的状态值函数和动作值函数。最优策略$\pi^*$对应的最优状态值函数和动作值函数分别为：<br>$$V^*(s)&#x3D;\max_{\pi} [R(s,a)+\gamma\sum_{s’}Pr(s’|s,a)V^*(s’)]$$<br>$$Q^*(s,a)&#x3D;R(s,a)+\gamma\sum_{s’}Pr(s’|s,a)\max_{a’}Q^*(s’,a’)$$<br>贝尔曼方程为求解最优策略提供了递归关系。</p>]]></content>
     
     
       
