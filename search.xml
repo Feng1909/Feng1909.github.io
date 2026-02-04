@@ -1809,8 +1809,7 @@ v_\pi(s) &amp;= \mathbb{E}[R_{t+1} \mid S_t = s] + \gamma \mathbb{E}[G_{t+1} \mi
 &amp;= \underbrace{\sum_a \pi(a|s) \sum_r p(r|s,a) r}_{\text{mean of immediate rewards}} + \gamma \underbrace{\sum_a \pi(a|s) \sum_{s&#039;} p(s&#039;|s,a) v_\pi(s&#039;)}_{\text{mean of future rewards}}, \\
 &amp;= \sum_a \pi(a|s) \left[ \sum_r p(r|s,a) r + \gamma \sum_{s&#039;} p(s&#039;|s,a) v_\pi(s&#039;) \right], \quad \forall s \in \mathcal{S} \\
 &amp;= \sum_a \pi(a|s) \sum_{s&#039;,r} p(s&#039;, r|s,a) \left[ r + \gamma v_\pi(s&#039;) \right], \quad \forall s \in \mathcal{S}.
-\end{align*}
-</p>
+\end{align*}</p>
 ]]></content>
       <categories>
         <category>主动感知</category>
