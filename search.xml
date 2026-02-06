@@ -2354,7 +2354,7 @@ I(H;Y)&amp;=H(X)-H(X|Y) \\
 <p>上传镜像</p>
  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker push ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure>
 <p>上传完成后如图：<br />
-<img src="github存docker镜像/image.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<img src="image.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 </li>
 </ol>
 ]]></content>
