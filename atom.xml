@@ -6,7 +6,7 @@
   <link href="https://blog.fengyunji.site/atom.xml" rel="self"/>
   
   <link href="https://blog.fengyunji.site/"/>
-  <updated>2026-02-06T03:51:03.666Z</updated>
+  <updated>2026-02-06T07:18:07.073Z</updated>
   <id>https://blog.fengyunji.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github存docker镜像</title>
+    <link href="https://blog.fengyunji.site/github%E5%AD%98docker%E9%95%9C%E5%83%8F/"/>
+    <id>https://blog.fengyunji.site/github%E5%AD%98docker%E9%95%9C%E5%83%8F/</id>
+    <published>2026-02-06T07:08:10.000Z</published>
+    <updated>2026-02-06T07:18:07.073Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于docker hub使用国内网络无法上传或者速率过慢，因此可以使用<strong>GitHub Package</strong>进行替代。</p><h2 id="前期准备"><a class="markdownIt-Anchor" href="#前期准备"></a> 前期准备</h2><ul><li>GitHub账号</li><li>在GitHub的<a href="https://github.com/settings/tokens">Tokens</a>中新增一个API token</li></ul><h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h2><ol><li><p>在终端中登录github</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login ghcr.io</span><br></pre></td></tr></table></figure><p>用户名是GitHub用户名，密码是刚刚的token</p></li><li><p>将待上传的容器commit为镜像（或直接准备好镜像）</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 容器</span></span><br><span class="line">docker commit fyj_deform_slam docker.pkg.github.com/feng1909/deform-slam:1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line">docker tag docker.pkg.github.com/feng1909/deform-slam:1.0 ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure></li><li><p>上传镜像</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure><p>上传完成后如图：<br /><img src="github存docker镜像/image.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;由于docker hub使用国内网络无法上传或者速率过慢，因此可以使用&lt;strong&gt;GitHub Package&lt;/strong&gt;进行替代。&lt;/p&gt;
+&lt;h2 id=&quot;前期准备&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前期准备&quot;&gt;&lt;/a&gt; </summary>
+      
+    
+    
+    
+    <category term="博客" scheme="https://blog.fengyunji.site/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>信息论基础1</title>
@@ -505,37 +528,6 @@
     
     
     <category term="Orin NX" scheme="https://blog.fengyunji.site/tags/Orin-NX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vins回环检测</title>
-    <link href="https://blog.fengyunji.site/vins%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B/"/>
-    <id>https://blog.fengyunji.site/vins%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B/</id>
-    <published>2024-10-21T08:53:14.000Z</published>
-    <updated>2026-02-02T06:53:13.884Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="研究背景"><a class="markdownIt-Anchor" href="#研究背景"></a> 研究背景</h2><p>在使用Mast3r进行三维重建的时候，原始方法是对n张图片通过n*(n-1)的复杂度进行遍历匹配，但是这种方法太费时：50张图需要2450次匹配，单次匹配需要0.3秒(Nvidia RTX 3060)，共计需要12分钟。</p><p>当手动选取具有共视区的图像对时，只选取了241组配对图片，只需要1.2分钟即可匹配完成，因此根据共视区选取图像对的方法，可以大大减少匹配时间。</p><h2 id="回环检测"><a class="markdownIt-Anchor" href="#回环检测"></a> 回环检测</h2><p>在当前的研究中，可以完成共视区计算的算法主要应用与SLAM的回环检测中，回环检测是SLAM中的一个重要环节，它可以提高地图的一致性，减少累积误差，提高定位的精度。常用算法有ORB、VINS等。</p><p>因此可以选用VINS的回环检测算法，通过计算共视区，选取具有共视区的图像对，减少匹配时间。</p><h2 id="vins回环检测"><a class="markdownIt-Anchor" href="#vins回环检测"></a> VINS回环检测</h2><p>VINS回环检测的主要流程如下：</p><ol><li>利用DBoW2进行回环检测。</li><li>除了用于单目VIO的角点特征外，还添加了500个角点并使用BRIEF描述子描述。额外的角点特征用于在回环检测中实现更好的召回率。</li><li>DBoW2在时间和空间一致性检查后返回回环检测候选帧。</li><li>VINS保留所有用于特征检索的BRIEF描述子，丢弃原始图像以减少内存消耗。</li><li>检测到回环时，通过BRIEF描述子匹配找到对应关系，建立局部滑动窗口与回环候选帧之间的连接。</li></ol><p>算法流程图为：<br /><img src="/vins%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B/vins.png" alt="alt text"   data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/></p><h3 id="dbow2"><a class="markdownIt-Anchor" href="#dbow2"></a> DBoW2</h3><p>DBoW2是一个用于图像检索的库，它可以用于回环检测。</p><p>代码为：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">KeyFrame::computeWindowBRIEFPoint</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="function">BriefExtractor <span class="title">extractor</span><span class="params">(BRIEF_PATTERN_FILE.c_str())</span></span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)point_2d_uv.<span class="built_in">size</span>(); i++)</span><br><span class="line">&#123;</span><br><span class="line">    cv::KeyPoint key;</span><br><span class="line">    key.pt = point_2d_uv[i];</span><br><span class="line">    window_keypoints.<span class="built_in">push_back</span>(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">extractor</span>(image, window_keypoints, window_brief_descriptors);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">KeyFrame::computeBRIEFPoint</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="function">BriefExtractor <span class="title">extractor</span><span class="params">(BRIEF_PATTERN_FILE.c_str())</span></span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> fast_th = <span class="number">20</span>; <span class="comment">// corner detector response threshold</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">1</span>)</span><br><span class="line">cv::<span class="built_in">FAST</span>(image, keypoints, fast_th, <span class="literal">true</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">vector&lt;cv::Point2f&gt; tmp_pts;</span><br><span class="line">cv::<span class="built_in">goodFeaturesToTrack</span>(image, tmp_pts, <span class="number">500</span>, <span class="number">0.01</span>, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)tmp_pts.<span class="built_in">size</span>(); i++)</span><br><span class="line">&#123;</span><br><span class="line">    cv::KeyPoint key;</span><br><span class="line">    key.pt = tmp_pts[i];</span><br><span class="line">    keypoints.<span class="built_in">push_back</span>(key);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">extractor</span>(image, keypoints, brief_descriptors);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)keypoints.<span class="built_in">size</span>(); i++)</span><br><span class="line">&#123;</span><br><span class="line">Eigen::Vector3d tmp_p;</span><br><span class="line">m_camera-&gt;<span class="built_in">liftProjective</span>(Eigen::<span class="built_in">Vector2d</span>(keypoints[i].pt.x, keypoints[i].pt.y), tmp_p);</span><br><span class="line">cv::KeyPoint tmp_norm;</span><br><span class="line">tmp_norm.pt = cv::<span class="built_in">Point2f</span>(tmp_p.<span class="built_in">x</span>()/tmp_p.<span class="built_in">z</span>(), tmp_p.<span class="built_in">y</span>()/tmp_p.<span class="built_in">z</span>());</span><br><span class="line">keypoints_norm.<span class="built_in">push_back</span>(tmp_norm);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;研究背景&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#研究背景&quot;&gt;&lt;/a&gt; 研究背景&lt;/h2&gt;
-&lt;p&gt;在使用Mast3r进行三维重建的时候，原始方法是对n张图片通过n*(n-1)的复杂度进行遍历匹配，但是这种方法太费时：50张图需要2</summary>
-      
-    
-    
-    
-    <category term="SLAM" scheme="https://blog.fengyunji.site/categories/SLAM/"/>
-    
-    
-    <category term="vins" scheme="https://blog.fengyunji.site/tags/vins/"/>
-    
-    <category term="共视区" scheme="https://blog.fengyunji.site/tags/%E5%85%B1%E8%A7%86%E5%8C%BA/"/>
-    
-    <category term="特征点" scheme="https://blog.fengyunji.site/tags/%E7%89%B9%E5%BE%81%E7%82%B9/"/>
-    
-    <category term="回环检测" scheme="https://blog.fengyunji.site/tags/%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
