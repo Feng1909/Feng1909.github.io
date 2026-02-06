@@ -2265,8 +2265,40 @@ steps:<br />
       </tags>
   </entry>
   <entry>
+    <title>github存docker镜像</title>
+    <url>/github%E5%AD%98docker%E9%95%9C%E5%83%8F/</url>
+    <content><![CDATA[<p>由于docker hub使用国内网络无法上传或者速率过慢，因此可以使用<strong>GitHub Package</strong>进行替代。</p>
+<h2 id="前期准备"><a class="markdownIt-Anchor" href="#前期准备"></a> 前期准备</h2>
+<ul>
+<li>GitHub账号</li>
+<li>在GitHub的<a href="https://github.com/settings/tokens">Tokens</a>中新增一个API token</li>
+</ul>
+<h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h2>
+<ol>
+<li>
+<p>在终端中登录github</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker login ghcr.io</span><br></pre></td></tr></table></figure>
+<p>用户名是GitHub用户名，密码是刚刚的token</p>
+</li>
+<li>
+<p>将待上传的容器commit为镜像（或直接准备好镜像）</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 容器</span></span><br><span class="line">docker commit fyj_deform_slam docker.pkg.github.com/feng1909/deform-slam:1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line">docker tag docker.pkg.github.com/feng1909/deform-slam:1.0 ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>上传镜像</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker push ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure>
+<p>上传完成后如图：<br />
+<img src="image.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
     <title>信息论基础1</title>
-    <url>/%E4%BF%A1%E6%81%AF%E8%AE%BA%E5%9F%BA%E7%A1%801/</url>
+    <url>/%E4%BF%A1%E6%81%AF%E8%AE%BA%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>信息论最初处理的问题是数据压缩与传输领域中的问题，其处理方法利用了熵和互信息等基本量：</p>
 <ul>
 <li>
@@ -2329,37 +2361,5 @@ I(H;Y)&amp;=H(X)-H(X|Y) \\
       <tags>
         <tag>背景知识</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>github存docker镜像</title>
-    <url>/github%E5%AD%98docker%E9%95%9C%E5%83%8F/</url>
-    <content><![CDATA[<p>由于docker hub使用国内网络无法上传或者速率过慢，因此可以使用<strong>GitHub Package</strong>进行替代。</p>
-<h2 id="前期准备"><a class="markdownIt-Anchor" href="#前期准备"></a> 前期准备</h2>
-<ul>
-<li>GitHub账号</li>
-<li>在GitHub的<a href="https://github.com/settings/tokens">Tokens</a>中新增一个API token</li>
-</ul>
-<h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h2>
-<ol>
-<li>
-<p>在终端中登录github</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker login ghcr.io</span><br></pre></td></tr></table></figure>
-<p>用户名是GitHub用户名，密码是刚刚的token</p>
-</li>
-<li>
-<p>将待上传的容器commit为镜像（或直接准备好镜像）</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 容器</span></span><br><span class="line">docker commit fyj_deform_slam docker.pkg.github.com/feng1909/deform-slam:1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line">docker tag docker.pkg.github.com/feng1909/deform-slam:1.0 ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>上传镜像</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker push ghcr.io/feng1909/deform-slam:1.0</span><br></pre></td></tr></table></figure>
-<p>上传完成后如图：<br />
-<img src="image.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
   </entry>
 </search>
