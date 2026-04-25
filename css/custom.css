@@ -1,0 +1,7 @@
+.trm-publication h4::before,
+.trm-publication h5::before,
+.trm-publication h6::before {
+  display: none;
+  width: 0;
+  content: none;
+}
