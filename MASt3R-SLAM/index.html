@@ -906,10 +906,19 @@ g_j&amp;=\sum_k J_j^{kT}W_k e_k
                     ...{"enable":true,"envId":"https://twikoo.fengyunji.site","region":null,"option":null},
                     el:'#tcomment'
                 }).then(function () {
-                    let container = document.querySelector('body>.tk-admin-container')
-                    if(container) container.remove()
-                    document.body.append(document.querySelector('.tk-admin-container'))
-                });;
+                    const panel = document.querySelector('#tcomment .tk-admin-container');
+                    if (!panel) return;
+
+                    document.querySelector('body > .tk-admin-container')?.remove();
+                    document.querySelector('body > .tk-admin-root')?.remove();
+
+                    // Twikoo 2.x scopes its admin styles to a .twikoo ancestor.
+                    // Keep the panel outside the theme's animated containers.
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'twikoo tk-admin-root';
+                    wrapper.appendChild(panel);
+                    document.body.appendChild(wrapper);
+                });
             </script>
 
         
